@@ -1,4 +1,6 @@
 # 事务:并发管理和恢复
+<font face="微软雅黑" size="3px">
+
 [1][美]Grant Allen, Mike Qwens. SQLite权威指南（第二版）[M].北京：电子工业出版社,2012,01:325-332.
 
 [2]Sibsankar Haldar. Inside SQLite[M].O’Reilly, 2007,04:68-72.
