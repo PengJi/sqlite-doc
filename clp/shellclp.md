@@ -1,4 +1,6 @@
 # Shell模式下使用CLP
+<font face="微软雅黑" size="3px">
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;shell.c文件包括main()函数，用于创建CLP（静态链接的命令行程序）可执行程序。编译成功后，在命令行输入sqlite3 [数据库文件名]，可触发CLP的shell模式，并连接到一个临时的内存中的数据库。CLP以交互形式运行，可以执行查询、获得schema信息、导入/导出数据以及其他数据库任务。
 如果创建一个称为test.db的数据库，在DOS shell下键入：sqlite3 test.db，一旦数据库创建之后就不能再修改。<br>
 1）执行数据查询
