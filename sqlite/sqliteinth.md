@@ -1,3 +1,5 @@
+<font face="微软雅黑" size="3px">
+
 具体定义如下：
 1.  _SQLITEINT_H_  SQLite内部界面的定义；
 2.	_LARGE_FILE 大文件
