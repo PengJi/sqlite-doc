@@ -70,7 +70,7 @@ nKey：键的长度；
       pH->count = 0;//表中的count置为0
     }
 ```
- InsertElement函数：向哈希表中插入元素；
+ `InsertElement`函数：向哈希表中插入元素；
  ```c
      static void insertElement(
       Hash *pH,              /* The complete hash table *///完整的哈希表
