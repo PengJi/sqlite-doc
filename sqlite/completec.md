@@ -1,6 +1,5 @@
 # complete.c模块源码分析
 <font face="微软雅黑" size="3px">
-
 主要功能：  
 　　此文件包含C代码，用于实现`sqlite3_complete()`的API。本代码用的是tokenizer.c源文件的一部分。但是分离出来了，该代码会自动省略静态链表而不使用它。  
 主要代码功能分析:  
