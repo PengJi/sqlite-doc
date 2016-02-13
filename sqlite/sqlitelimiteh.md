@@ -1,4 +1,6 @@
 # SqliteLimite.h 数据库源码分析报告
+<font face="微软雅黑" size="3px">
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这个头文件定义了SQLite能够处理的变量范围。如TEXT或者   BLOB（ BLOB(binary large object)是一个大文件，典型的BLOB是一张图片或一个声音文件）的最大字节长度，表或者索引中一行的大小等等。<br>
 这个头文件一共定义了18个宏，具体定义的宏如下：<br>
 无参一般形式#define 标识符 字符串<br>
