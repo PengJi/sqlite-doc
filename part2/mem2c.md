@@ -18,16 +18,11 @@ mem2.c中主要用于调试，增加了用于调试的附属结构。使用SQLIT
 	**  ------------------------------------------------------------------------
 	**  | Title |  backtrace pointers |  MemBlockHdr |  allocation |  EndGuard |
 	**  ------------------------------------------------------------------------
-Title:用于描述这段内存，在出错时可以打印出来。
-
-backtrace pointer:用于保留调用堆栈。
-
-MemBlockHdr:负责这片内存的管理，以及串联unfree的MemBlock。
-
-allocation:分配给上层的空间。
-
-EndGuard:尾部的哨兵，用于检查内存被踩。
-
-还有个“HeadGaurd ”在MemBlockHdr中。
+Title:用于描述这段内存，在出错时可以打印出来。  
+backtrace pointer:用于保留调用堆栈。  
+MemBlockHdr:负责这片内存的管理，以及串联unfree的MemBlock。  
+allocation:分配给上层的空间。  
+EndGuard:尾部的哨兵，用于检查内存被踩。  
+还有个“HeadGaurd ”在MemBlockHdr中。  
 
 
