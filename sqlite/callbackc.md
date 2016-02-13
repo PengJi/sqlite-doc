@@ -29,10 +29,8 @@
     #endif
     }
 ```
-
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;排序系统如果未能提供一个很好的排序函数，也有可能提供其他版本的排序函数的供这个程序被调用。如果它们存在使用其中的一个来代替。如果可能的话，尽量避免UTF-8<- > UTF-16转换。<br></br>
-
+排序系统如果未能提供一个很好的排序函数，也有可能提供其他版本的排序函数的供这个程序被调用。如果它们存在使用其中的一个来代替。如果可能的话，尽量避免UTF-8<- > UTF-16转换。
+```c
     static int synthCollSeq(sqlite3 *db, CollSeq *pColl){
       CollSeq *pColl2;
       char *z = pColl->zName;
@@ -48,10 +46,9 @@
       }
       return SQLITE_ERROR;
     }
-
-
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过给定名称的功能，搜索FuncDefHash。如果找到，返回指针到FuncDef，如果没找到返回0。<br></br>
+```
+通过给定名称的功能，搜索FuncDefHash。如果找到，返回指针到FuncDef，如果没找到返回0。
+```c
 
     static FuncDef *functionSearch(
       FuncDefHash *pHash,  /* Hash table to search 哈希表搜索*/
@@ -67,10 +64,10 @@
       }
       return 0;
     }
-<br></br>
+```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;插入一个新的FuncDef到哈希表FuncDefHash：
-
+插入一个新的FuncDef到哈希表FuncDefHash：
+```c
     void sqlite3FuncDefInsert(
       FuncDefHash *pHash,  /* The hash table into which to insert 哈希表插入*/
       FuncDef *pDef        /* The function definition to insert 该函数定义插入*/
@@ -90,12 +87,9 @@
         pHash->a[h] = pDef;
       }
     }
-
-<br></br>
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-释放结构下所有的资源：<br></br>
-
+```
+释放结构下所有的资源：
+```c
     void sqlite3SchemaClear(void *p){
       Hash temp1;
       Hash temp2;
@@ -123,9 +117,9 @@
         pSchema->flags &= ~DB_SchemaLoaded;
       }
     }
-<br></br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;三个排序序列被复制之后，立即存储。这个字符串的指针被存储在各个排序序列：<br></br>
-
+```
+三个排序序列被复制之后，立即存储。这个字符串的指针被存储在各个排序序列：
+```c
     static CollSeq *findCollSeqEntry(
       sqlite3 *db,          /* Database connection 数据库连接*/
       const char *zName,    /* Name of the collating sequence 整理顺序名称*/
@@ -149,3 +143,4 @@
           pColl[0].zName[nName] = 0;
           pDel = sqlite3HashInsert(&db->aCollSeq, pColl[0].zName, nName, pColl);
 
+```
