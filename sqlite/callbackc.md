@@ -1,12 +1,13 @@
 # callback.c模块源码分析
-<br></br>
-主要功能：<br></br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用于访问用户定义的函数和排序队列的内部哈希表功能。<br></br>
-具体应用：<br></br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sqlite3_exec()包含一个回叫(callback)机制，提供了一种从SELECT语句得到结果的方法。如果提供了回叫函数，SQLite则会在执行SELECT语句期间在遇到记录时调用回叫函数。<br></br>
-重要代码:<br></br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;调用“排序请求”回调请求一个排序序列:<br></br>
+<font face="微软雅黑" size="3px">
 
+主要功能：  
+用于访问用户定义的函数和排序队列的内部哈希表功能。  
+具体应用:  
+`sqlite3_exec()`包含一个回叫(callback)机制，提供了一种从SELECT语句得到结果的方法。如果提供了回叫函数，SQLite则会在执行SELECT语句期间在遇到记录时调用回叫函数。  
+重要代码:  
+调用“排序请求”回调请求一个排序序列:
+```C
     static void callCollNeeded(sqlite3 *db, int enc, const char *zName){
       assert( !db->xCollNeeded || !db->xCollNeeded16 );
       if( db->xCollNeeded ){
@@ -28,6 +29,7 @@
       }
     #endif
     }
+```
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;排序系统如果未能提供一个很好的排序函数，也有可能提供其他版本的排序函数的供这个程序被调用。如果它们存在使用其中的一个来代替。如果可能的话，尽量避免UTF-8<- > UTF-16转换。<br></br>
