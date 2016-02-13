@@ -1,4 +1,6 @@
 # Hash
+<font face="微软雅黑" size="3px">
+
 （1）哈希表的定义<br></br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;散列表（Hash table，也叫哈希表），是根据关键码值(Key value)而直接进行访问的数据结构。即通过把关键码值映射到表中一个位置来访问记录，以加快查找的速度。映射函数叫做散列函数，存放记录的数组叫做散列表。<br></br>
 （2）哈希表的寻址方法
