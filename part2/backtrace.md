@@ -1,4 +1,5 @@
 # 关于backtrace
+```c
 	if( mem.nBacktrace ){ /*如果backtrace深度为0.那么就不用执行*/
 	      void *aAddr[40];
 	      pHdr->nBacktrace = backtrace(aAddr, mem.nBacktrace+1)-1;
@@ -10,4 +11,5 @@
 	    }else{
 	      pHdr->nBacktrace = 0;
 	    }
+```
 可以设置malloc的backtrace的深度和在生成backtrace后可以通过回调函数将其传出去。
