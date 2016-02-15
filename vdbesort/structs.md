@@ -1,21 +1,24 @@
 # 结构体定义
 <font face="微软雅黑" size="3px">
 
-1.结构体vdbesorter的定义<br>
-（1）struct VdbeSorter {<br>
-  		i64 iWriteOff; /* 文件ptemp1（存储PMA的文件）中，当前的写偏移量*/<br>
- 	    i64 iReadOff; /*文件ptemp1（PMA file 1）中，当前的读偏移量*/<br>
-        int nInMemory; /*作为PMA的pRecord list的当前大小*/<br>
-  	    int nTree; /* aTree/aIter的已用大小（2的幂）*/<br>
-  	    int nPMA; /*文件pTemp1中存储的PMA的数量*/<br>
-        int mnPmaSize; /* PMA至少多大（按字节数算）*/<br>
-  		int mxPmaSize; /* PMA至少多大（按字节数算）*/<br>
-  		VdbeSorterIter *aIter; /*存储要合并到一起的iterator的VdbeSorterIter的数组*/<br>
+1.结构体vdbesorter的定义  
+（1）
+```c
+struct VdbeSorter {
+  		i64 iWriteOff; /* 文件ptemp1（存储PMA的文件）中，当前的写偏移量*/
+ 	    i64 iReadOff; /*文件ptemp1（PMA file 1）中，当前的读偏移量*/
+        int nInMemory; /*作为PMA的pRecord list的当前大小*/
+  	    int nTree; /* aTree/aIter的已用大小（2的幂）*/
+  	    int nPMA; /*文件pTemp1中存储的PMA的数量*/
+        int mnPmaSize; /* PMA至少多大（按字节数算）*/
+  		int mxPmaSize; /* PMA至少多大（按字节数算）*/
+  		VdbeSorterIter *aIter; /*存储要合并到一起的iterator的VdbeSorterIter的数组*/
         int *aTree; /* 增量合并的当前状态*/<br>
-        sqlite3_file *pTemp1; /*指向存储PMA的文件的指针*/<br>
-        SorterRecord *pRecord; /*内存中记录列表的头*/<br>
+        sqlite3_file *pTemp1; /*指向存储PMA的文件的指针*/
+        SorterRecord *pRecord; /*内存中记录列表的头*/
         UnpackedRecord *pUnpacked; /*用来解包keys*/
-    };<br>
+    };
+```
 	（2）下面这个结构体是这是本源文件开头处声明的第1个结构体的定义，定义了PMA的iterator，把当前的key储存在变量nKey/aKey中，若iterator在EOF处，sqlite3_file类型的指针pFile==0。<br>
 	struct VdbeSorterIter {<br>
   		i64 iReadOff; /*当前读偏移量*/<br>
