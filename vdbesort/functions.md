@@ -1,7 +1,7 @@
 # 函数定义
 <font face="微软雅黑" size="3px">
 
-由于本文件中定义的函数实在太多，而本报告篇幅有限，所以下面简要介绍一下本原文件中所定义的函数，只列出了函数中函数的声明部分。
+由于本文件中定义的函数实在太多，而本报告篇幅有限，所以下面简要介绍一下本原文件中所定义的函数，只列出了函数中函数的声明部分。  
     （1）static void vdbeSorterIterZero(sqlite3 *db， VdbeSorterIter *pIter){}
 	该方法的功能就是释放由第二个参数VdbeSorterIter *pIter指向的VdbeSorterIter实例的内存空间。 该函数会被第十个定义的函数调用。
 	（2）static int vdbeSorterIterRead(sqlite3 *db， VdbeSorterIter *p， int nByte， u8 **ppOut ){}
