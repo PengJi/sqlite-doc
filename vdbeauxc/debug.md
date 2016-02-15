@@ -1,5 +1,7 @@
 # debug模式
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果需要调试功能，设置sqlite3VdbeAddopTrace=1即可。在这种情况下，所有操作码(opcodes)都会被添加到指令流，以便于显示出来。
+<font face="微软雅黑" size="3px">
+
+如果需要调试功能，设置sqlite3VdbeAddopTrace=1即可。在这种情况下，所有操作码(opcodes)都会被添加到指令流，以便于显示出来。
 （1）操作码迭代器部分
 以下是一个Vdbe迭代器结构的定义
 struct VdbeOpIter {<br>
