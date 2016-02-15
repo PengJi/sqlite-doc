@@ -1,13 +1,13 @@
 # vdbe准备阶段
 <font face="微软雅黑" size="3px">
 
-该阶段需要为vdbe添加各种操作码为vdbe的执行做准备。准备阶段涉及到函数有
+该阶段需要为vdbe添加各种操作码为vdbe的执行做准备。准备阶段涉及到函数有  
 （1） Sql语句设置函数
 该功能由函数`void sqlite3VdbeSetSql(Vdbe *p， const char *z， int n， int isPrepareV2)`实现。
 该函数为vdbe设置值为z的SQL语句。该语句长度为n，isPrepare作为标记参数。
 <br/>
 （2）操作码添加函数及操作码数组扩展函数
-操作码数组扩展功能由函数static int growOpArray(Vdbe *p)实现。
+操作码数组扩展功能由函数`static int growOpArray(Vdbe *p)`实现。
 该函数是为VDBE扩展其操作码数组大小。其数组空间是逐渐扩展的。在该函数执行过程中，可能由于内存不足导致调整失败，此时程序会返回SQLITE_NOMEM。Vdbe原有操作码数组及操作码数量保持不变。这样可以保证在VDBE空闲时能够正确释放空余空间。<br/>
 操作码添加功能由以下函数实现:<br/>
 int sqlite3VdbeAddOp3(Vdbe *p， int op， int p1， int p2， int p3) //对应于操作码的操作数为3个的情况
