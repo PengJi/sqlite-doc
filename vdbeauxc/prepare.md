@@ -13,7 +13,7 @@
 `int sqlite3VdbeAddOp0(Vdbe *p， int op)` //对应于操作码的操作数为0个的情况  
 `int sqlite3VdbeAddOp1(Vdbe *p， int op， int p1)` //对应于操作码的操作数为1个的情况  
 `int sqlite3VdbeAddOp2(Vdbe *p， int op， int p1， int p2)` //对应于操作码的操作数为2个的情况  
-```
+```c
 //对应于操作码的操作数为3个，但是有特定的操作码类型的情况
 int sqlite3VdbeAddOp4(
   Vdbe *p，            /* Add the opcode to this VM */<br/>
@@ -25,21 +25,18 @@ int sqlite3VdbeAddOp4(
   int p4type          /* P4 operand type */<br/>
 )
 ```
-
-
-操作码添加函数主要是由sqlite3VdbeAddOp3实现，其他情况除了sqlite3VdbeAddOp4需要为操作码增加操作类型外，均调用sqlite3VdbeAddOp3进行处理。<br/>
-参数p是指向vdbe的指针，op是需要添加的操作码，p1、p2、p3分别对应操作数1、操作数2、操作数3，zP4如果参数p4type>=0，那么zP4是动态的，它是由一个sqlite3_malloc()分配的内存字符串。如果p4type ==0，P4的操作数由zP4确定，并且包含第一个null byte。如果p4type >0，那么P4的操作数是zP4的前n+1byte；如果p4type ==P4_KEYINFO，那么zP4代表一个指向KeyInfo结构的指针。这个指针指向的是由sqlite3_malloc()分配的KeyInfo结构的内存副本。当vdbe销毁时，该空间将被释放。如果是p4type是其他值（P4_STATIC， P4_COLLSEQ等），表示zP4指向的是在vdbe生命周期中存在的一个字符串或结构。在这种情况，直接复制该指针即可；如果addr<0，那么将P4设置为刚插入的指令。<br/>
-（3）添加操作码解析模式函数
-该功能主要由函数void sqlite3VdbeAddParseSchemaOp(Vdbe *p， int iDb， char *zWhere)实现。
-该函数是为了处理sqlite3VdbeAddOp4()中需要标记所有B树的情况，zWhere中必须包含内存分配条件，该函数必须能配置内存。<br/>
+操作码添加函数主要是由·sqlite3VdbeAddOp3·实现，其他情况除了·sqlite3VdbeAddOp4·需要为操作码增加操作类型外，均调用·sqlite3VdbeAddOp3·进行处理。  
+参数p是指向vdbe的指针，op是需要添加的操作码，p1、p2、p3分别对应操作数1、操作数2、操作数3，zP4如果参数`p4type>=0`，那么zP4是动态的，它是由一个`sqlite3_malloc()`分配的内存字符串。如果`p4type ==0`，P4的操作数由zP4确定，并且包含第一个null byte。如果p4type >0，那么P4的操作数是zP4的前n+1byte；如果`p4type ==P4_KEYINFO`，那么zP4代表一个指向KeyInfo结构的指针。这个指针指向的是由`sqlite3_malloc()`分配的KeyInfo结构的内存副本。当vdbe销毁时，该空间将被释放。如果是p4type是其他值（P4_STATIC， P4_COLLSEQ等），表示zP4指向的是在vdbe生命周期中存在的一个字符串或结构。在这种情况，直接复制该指针即可；如果`addr<0`，那么将P4设置为刚插入的指令。  
+（3）添加操作码解析模式函数  
+该功能主要由函数`void sqlite3VdbeAddParseSchemaOp(Vdbe *p， int iDb， char *zWhere)`实现。该函数是为了处理`sqlite3VdbeAddOp4()`中需要标记所有B树的情况，zWhere中必须包含内存分配条件，该函数必须能配置内存。  
 （4） Label标签创建以及标签填补(分配地址)函数
-Label标签创建功能主要由函数int sqlite3VdbeMakeLabel(Vdbe *p)实现。
-该函数实现了为一个即将编码的指令创建一个新的符号标签的过程。标签类似于占位符(个人理解)。起始阶段该标签为负值。它可以被作为P2的操作数。当该标签被分配一个地址时，vdbe会扫描其操作链表并将P2的值设为该地址。vdbe可以辨别出P2的值是一个标签，因为P2的值不应该为负数。因此，在地址被分配前，如果P2的值为负数，则该值为一个标签。该函数返回标签的值。<br/>
-创建标签后需要填补标签，这时填补标签的过程其实就是给标签分配地址的过程。<br/>
-填补标签功能由函数void sqlite3VdbeResolveLabel(Vdbe *p， int x)和static void resolveP2Values(Vdbe *p， int *pMaxFuncArgs)实现。
-前一个函数主要是处理除了P2操作数以外的标签分配地址，该地址是下一个指令插入的地址。标签由参数x提供，参数x必须从sqlite3VdbeMakeLabel中获取，即在函数分配函数执行前必须执行sqlite3VdbeMakeLabel。<br/>
-函数resolveP2Values依次检查跳转指令中P2的值是否为负数。如果为负数，则这些值为标签。为这些标签分配相应的地址(相应的非零值)。该函数在所有操作数被插入后被调用。<br/>
-参数pMaxFuncArgs表示P2中OP_Function， OP_AggStep o或者 OP_VFilter 操作码的最大值。它被作为一个参数传递给sqlite3VdbeMakeReady()来设置vdbe的apArg[]数组的大小。Op中opflags域对vdbe所有操作码都有效。可以设置为OP_Function等OP_XX之类。如果支持虚表，则可以设置为OP_VUpdate之类。<br/>
+Label标签创建功能主要由函数`int sqlite3VdbeMakeLabel(Vdbe *p)`实现。
+该函数实现了为一个即将编码的指令创建一个新的符号标签的过程。标签类似于占位符(个人理解)。起始阶段该标签为负值。它可以被作为P2的操作数。当该标签被分配一个地址时，vdbe会扫描其操作链表并将P2的值设为该地址。vdbe可以辨别出P2的值是一个标签，因为P2的值不应该为负数。因此，在地址被分配前，如果P2的值为负数，则该值为一个标签。该函数返回标签的值。  
+创建标签后需要填补标签，这时填补标签的过程其实就是给标签分配地址的过程。  
+填补标签功能由函数`void sqlite3VdbeResolveLabel(Vdbe *p， int x)`和`static void resolveP2Values(Vdbe *p， int *pMaxFuncArgs)`实现。
+前一个函数主要是处理除了P2操作数以外的标签分配地址，该地址是下一个指令插入的地址。标签由参数x提供，参数x必须从sqlite3VdbeMakeLabel中获取，即在函数分配函数执行前必须执行sqlite3VdbeMakeLabel。  
+函数resolveP2Values依次检查跳转指令中P2的值是否为负数。如果为负数，则这些值为标签。为这些标签分配相应的地址(相应的非零值)。该函数在所有操作数被插入后被调用。  
+参数pMaxFuncArgs表示P2中OP_Function， OP_AggStep o或者 OP_VFilter 操作码的最大值。它被作为一个参数传递给sqlite3VdbeMakeReady()来设置vdbe的apArg[]数组的大小。Op中opflags域对vdbe所有操作码都有效。可以设置为OP_Function等OP_XX之类。如果支持虚表，则可以设置为OP_VUpdate之类。  
 （5）添加操作码链函数
-该功能主要由函数int sqlite3VdbeAddOpList(Vdbe *p， int nOp， VdbeOpList const *aOp)实现。
+该功能主要由函数`int sqlite3VdbeAddOpList(Vdbe *p， int nOp， VdbeOpList const *aOp)`实现。
 该函数实现了将操作码链aOp加入到操作堆栈中并返回第一操作码的地址。nOp代表链中元素的个数。
