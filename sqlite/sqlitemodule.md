@@ -1,4 +1,6 @@
 # SQLite模块结构
+<font face="微软雅黑" size="3px">
+
 SQLite 由以下几个主要模块组成：SQL 编译器、内核、后端。
 
 * 接口：接口由SQLite C API组成，程序可以通过API与SQLite数据库进行交互。
