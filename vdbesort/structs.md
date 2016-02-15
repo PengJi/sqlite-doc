@@ -45,9 +45,11 @@ struct VdbeSorterIter {
 		sqlite3_file *pFile; /*此指针指向将被写入数据的文件的指针*/
 	};
 ```
-(4)下面这个结构体用来存储一个单独的记录。所有内存中的记录被连接成一个链表，链表的头SorterRecord *pRecord由指针SorterRecord *pNext指向。
-	struct SorterRecord<br> {//这是本源文件开头处声明的第2个结构体的定义<br>
-  		void *pVal;<br>
- 		 int nVal;<br>
-  		SorterRecord *pNext;<br>
-	};<br>
+(4)下面这个结构体用来存储一个单独的记录。所有内存中的记录被连接成一个链表，链表的头`SorterRecord *pRecord`由指针`SorterRecord *pNext`指向。  
+```c
+	struct SorterRecord {//这是本源文件开头处声明的第2个结构体的定义
+  		void *pVal;
+ 		 int nVal;
+  		SorterRecord *pNext;
+	};
+```
