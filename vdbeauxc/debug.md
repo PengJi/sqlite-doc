@@ -1,16 +1,18 @@
 # debug模式
 <font face="微软雅黑" size="3px">
 
-如果需要调试功能，设置sqlite3VdbeAddopTrace=1即可。在这种情况下，所有操作码(opcodes)都会被添加到指令流，以便于显示出来。
-（1）操作码迭代器部分
-以下是一个Vdbe迭代器结构的定义
-struct VdbeOpIter {<br>
+如果需要调试功能，设置sqlite3VdbeAddopTrace=1即可。在这种情况下，所有操作码(opcodes)都会被添加到指令流，以便于显示出来。  
+（1）操作码迭代器部分  
+以下是一个Vdbe迭代器结构的定义  
+```c
+struct VdbeOpIter {
   Vdbe *v;                   /* Vdbe to iterate through the opcodes of */<br>
   SubProgram **apSub;        /* Array of subprograms */<br>
   int nSub;                  /* Number of entries in apSub */<br>
   int iAddr;                 /* Address of next instruction to return */<br>
   int iSub;                  /* 0 = main program， 1 = first sub-program etc。 */<br>
-};<br>
+};
+```
 函数static Op *opIterNext(VdbeOpIter *p)
 该函数实现了操作码迭代器的next功能，可以通过以下方式使用：
 Op *pOp;<br>
