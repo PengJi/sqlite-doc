@@ -1,5 +1,7 @@
 # vdbe准备阶段
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;该阶段需要为vdbe添加各种操作码为vdbe的执行做准备。准备阶段涉及到函数有
+<font face="微软雅黑" size="3px">
+
+该阶段需要为vdbe添加各种操作码为vdbe的执行做准备。准备阶段涉及到函数有
 （1） Sql语句设置函数
 该功能由函数void sqlite3VdbeSetSql(Vdbe *p， const char *z， int n， int isPrepareV2)实现。
 该函数为vdbe设置值为z的SQL语句。该语句长度为n，isPrepare作为标记参数。
