@@ -10,7 +10,7 @@ struct VdbeOpIter {
   SubProgram **apSub;        /* Array of subprograms */<br>
   int nSub;                  /* Number of entries in apSub */<br>
   int iAddr;                 /* Address of next instruction to return */<br>
-  int iSub;                  /* 0 = main program， 1 = first sub-program etc。 */<br>
+  int iSub;                  /* 0 = main program， 1 = first sub-program etc。 */
 };
 ```
 函数static Op *opIterNext(VdbeOpIter *p)
