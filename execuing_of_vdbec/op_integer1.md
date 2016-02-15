@@ -1,10 +1,9 @@
 # OP_Integer
 <font face="微软雅黑" size="3px">
 
-下图是OP_Integer的内容:
-
- ![]( 4-5-7.jpg)
- ```
+下图是OP_Integer的内容:  
+![]( 4-5-7.jpg)
+```
  case OP_Integer: {         /* out2-prerelease */
   pOut->u.i = pOp->p1;
   break;
