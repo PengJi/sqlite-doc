@@ -38,7 +38,7 @@ trace是保存指令流的文件，通过访问该指针可以得到指令的执
 2）交换两个vdbe的所有内容
 该功能由函数`void sqlite3VdbeSwap(Vdbe *pA， Vdbe *pB)`实现。
 3）程序验证
-该功能由函数int sqlite3VdbeAssertMayAbort(Vdbe *v， int mayAbort)实现
+该功能由函数`int sqlite3VdbeAssertMayAbort(Vdbe *v， int mayAbort)`实现
 验证VM中的与pParse解析器相关联的程序是否出现ABORT异常。该异常由语句产生，但是该异常不需要所有事物都回滚。如果主程序或者子程序出现以下条件，那么该异常可能会发生。
 * OP_Halt with P1=SQLITE_CONSTRAINT and P2=OE_Abort。
 * OP_HaltIfNull with P1=SQLITE_CONSTRAINT and P2=OE_Abort。
