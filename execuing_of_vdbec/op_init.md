@@ -5,7 +5,7 @@
 
 ![](4-5-1.jpg)
 
-```c
+```
 case OP_Init: {          /* jump */
   if( pOp->p2 ){
     pc = pOp->p2 - 1;
