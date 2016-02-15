@@ -2,11 +2,11 @@
 <font face="微软雅黑" size="3px">
 
 在内部，SQLite由以下几个组件组成：内核、SQL编译器、后端以及附件。SQLite通过利用虚拟机和虚拟数据库引擎（VDBE），使调试、修改和扩展SQLite的内核变得更加方便。所有SQL语句都被编译成易读的、可以在SQLite虚拟机中执行的程序集。SQLite支持大小高达2 TB的数据库，每个数据库完全存储在单个磁盘文件中。这些磁盘文件可以在不同字节顺序的计算机之间移动。这些数据以B+树（B+tree）数据结构的形式存储在磁盘上。SQLite根据该文件系统获得其数据库权限。SQLite的体系结构图，如图1-1所示:  
+<img src="img1-1.jpg"> 
 （一）公共接口（Interface）  
 SQLite库的大部分公共接口由main.c, legacy.c和vdbeapi.c源文件中的函数来实现，这些函数依赖于分散在其他文件中的一些程序，因为在这些文件中它们可以访问有文件作用域的数据结构。  
 （二）词法分析器（Tokenizer）    
 当执行一个包含SQL语句的字符串时，接口程序要把这个字符串传递给tokenizer。Tokenizer的任务是把原有字符串分割成一个个标识符（token），并把这些标识符传递给解析器。Tokenizer是用手工编写的，在C文件tokenize.c中。  
-<img src="img1-1.jpg">  
 （三）语法分析器（Parser）  
 语法分析器的工作是在指定的上下文中赋予标识符具体的含义。SQLite的语法分析器使用Lemon LALR(1)分析程序生成器来产生，Lemon做的工作与YACC/BISON相同，但它使用不同的输入句法，这种句法更不易出错。Lemon还产生可重入的并且线程安全的语法分析器。Lemon定义了非终结析构器的概念，当遇到语法错误时它不会泄露内存。驱动Lemon的源文件可在parse.y中找到。  
 （四）代码生成器（Code Generator）  
