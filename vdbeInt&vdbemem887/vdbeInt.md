@@ -75,9 +75,6 @@ struct Vdbe｛
   Mem *pResultSet;
   …｝
 ```
-
-
-
   这个结构体定义了一个虚拟机的实体。这个结构体包含了虚拟机完整的状态。
 sqlite3_stmt这个结构的指针由sqlite3_prepare()方法返回，它是这个结构实体的一个真实指针。Vdbe.inVtab方法的变量在vdbe程序产生的任何虚拟表方法调用期间被置为零。
 这个变量主要用于两个目的：允许xDestroy方法实现删除表的声明以及为了防止分配内存失败产生的副作用。sqlite3_stmt这个结构的指针由sqlite3_prepare()方法返回，它是这个虚拟机实体的一个真实指针
