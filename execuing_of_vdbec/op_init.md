@@ -4,7 +4,6 @@
 下图是OP_Init的内容:
 
 ![](4-5-1.jpg)
-
 ```
 case OP_Init: {          /* jump */
   if( pOp->p2 ){
