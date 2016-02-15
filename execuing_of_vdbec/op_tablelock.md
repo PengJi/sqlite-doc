@@ -1,8 +1,10 @@
 # OP_TableLock
+<font face="微软雅黑" size="3px">
+
 下图是OP_TableLock的内容:
 
 ![](4-5-3.jpg)
-```
+```c
 case OP_TableLock: {
 u8 isWriteLock = (u8)pOp->p3;
 sqlite3BtreeLockTable(db->aDb[p1].pBt,pOp->p2,isWriteLock){
