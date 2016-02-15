@@ -1,7 +1,7 @@
 # 快速使用SQLite
 <font face="微软雅黑" size="3px">
 
-这里简要介绍了SQLite的使用方法.<br>
+这里简要介绍了SQLite的使用方法.  
 
 1.建立一个新的数据库<br>
 在shell或者DOS命令行下输入:"sqlite3 test.db". 这将建立一个新的名为"test.db"的数据库文件.(可以使用不同的数据库名)<br>
