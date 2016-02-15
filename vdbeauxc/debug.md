@@ -13,19 +13,20 @@ struct VdbeOpIter {
   int iSub;                  /* 0 = main program， 1 = first sub-program etc。 */
 };
 ```
-函数static Op *opIterNext(VdbeOpIter *p)
+函数`static Op *opIterNext(VdbeOpIter *p)`
 该函数实现了操作码迭代器的next功能，可以通过以下方式使用：
-Op *pOp;<br>
- VdbeOpIter sIter;<br>
+```c
+Op *pOp;
+ VdbeOpIter sIter;
  memset(&sIter， 0， sizeof(sIter));<br>
 sIter.v = v;                         // v is of
 <br>
 type Vdbe*     type1: P4_SUBPROGRAM<br>
-while( (pOp = opIterNext(&sIter)) ){<br>
+while( (pOp = opIterNext(&sIter)) ){
   // Do something with pOp
-  <br>
-   }<br>
-sqlite3DbFree(v->db， sIter.apSub);<br>
+   }
+sqlite3DbFree(v->db， sIter.apSub);
+```
 （2）显示部分
 操作码追踪功能由函数void sqlite3VdbeTrace(Vdbe *p， FILE *trace)实现.
 trace是保存指令流的文件，通过访问该指针可以得到指令的执行过程。
