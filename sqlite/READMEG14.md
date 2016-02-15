@@ -1,4 +1,6 @@
 # 快速使用SQLite
+<font face="微软雅黑" size="3px">
+
 这里简要介绍了SQLite的使用方法.<br>
 
 1.建立一个新的数据库<br>
