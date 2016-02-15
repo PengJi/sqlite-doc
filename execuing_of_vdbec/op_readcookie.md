@@ -10,7 +10,6 @@ case OP_ReadCookie: {
  	int iCookie = pOp->p3;
 sqlite3BtreeGetMeta(db->aDb[iDb].pBt,iCookie,(u32*)&iMeta);
 }
-
 ```
 sqlite3BtreeGetMeta函数是根据p3的值从第iDb号数据库中读取相应的元信息，这里p3为2，所以读取的是数据库格式信息。
 
