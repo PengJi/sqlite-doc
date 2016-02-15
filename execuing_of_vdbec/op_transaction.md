@@ -1,8 +1,10 @@
 # OP_Transaction
+<font face="微软雅黑" size="3px">
+
 下图是OP_Transaction的内容:
 
 ![](4-5-2.jpg)
-```
+```c
 case OP_Transaction: {
 Btree* pBt = db->aDb[pOp->p1].pBt;         	        	sqlite3BtreeBeginTrans(pBt, pOp->p2){
 	  sqlite3BtreeEnter(p);
