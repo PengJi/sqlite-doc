@@ -4,20 +4,17 @@
 该阶段需要为vdbe添加各种操作码为vdbe的执行做准备。准备阶段涉及到函数有  
 （1） Sql语句设置函数
 该功能由函数`void sqlite3VdbeSetSql(Vdbe *p， const char *z， int n， int isPrepareV2)`实现。
-该函数为vdbe设置值为z的SQL语句。该语句长度为n，isPrepare作为标记参数。
-<br/>
+该函数为vdbe设置值为z的SQL语句。该语句长度为n，isPrepare作为标记参数。   
 （2）操作码添加函数及操作码数组扩展函数
 操作码数组扩展功能由函数`static int growOpArray(Vdbe *p)`实现。
-该函数是为VDBE扩展其操作码数组大小。其数组空间是逐渐扩展的。在该函数执行过程中，可能由于内存不足导致调整失败，此时程序会返回SQLITE_NOMEM。Vdbe原有操作码数组及操作码数量保持不变。这样可以保证在VDBE空闲时能够正确释放空余空间。<br/>
-操作码添加功能由以下函数实现:<br/>
-int sqlite3VdbeAddOp3(Vdbe *p， int op， int p1， int p2， int p3) //对应于操作码的操作数为3个的情况
-<br/>
-int sqlite3VdbeAddOp0(Vdbe *p， int op) //对应于操作码的操作数为0个的情况
-<br/>
-int sqlite3VdbeAddOp1(Vdbe *p， int op， int p1) //对应于操作码的操作数为1个的情况
-<br/>
-int sqlite3VdbeAddOp2(Vdbe *p， int op， int p1， int p2) //对应于操作码的操作数为2个的情况
-<br/>
+该函数是为VDBE扩展其操作码数组大小。其数组空间是逐渐扩展的。在该函数执行过程中，可能由于内存不足导致调整失败，此时程序会返回SQLITE_NOMEM。Vdbe原有操作码数组及操作码数量保持不变。这样可以保证在VDBE空闲时能够正确释放空余空间。  
+操作码添加功能由以下函数实现:  
+`int sqlite3VdbeAddOp3(Vdbe *p， int op， int p1， int p2， int p3)` //对应于操作码的操作数为3个的情况  
+`int sqlite3VdbeAddOp0(Vdbe *p， int op)` //对应于操作码的操作数为0个的情况  
+`int sqlite3VdbeAddOp1(Vdbe *p， int op， int p1)` //对应于操作码的操作数为1个的情况  
+`int sqlite3VdbeAddOp2(Vdbe *p， int op， int p1， int p2)` //对应于操作码的操作数为2个的情况  
+```
+//对应于操作码的操作数为3个，但是有特定的操作码类型的情况
 int sqlite3VdbeAddOp4(
   Vdbe *p，            /* Add the opcode to this VM */<br/>
   int op，             /* The new opcode */<br/>
@@ -26,7 +23,9 @@ int sqlite3VdbeAddOp4(
   int p3，             /* The P3 operand */<br/>
   const char *zP4，    /* The P4 operand */<br/>
   int p4type          /* P4 operand type */<br/>
-)  //对应于操作码的操作数为3个，但是有特定的操作码类型的情况<br/>
+)
+```
+
 
 操作码添加函数主要是由sqlite3VdbeAddOp3实现，其他情况除了sqlite3VdbeAddOp4需要为操作码增加操作类型外，均调用sqlite3VdbeAddOp3进行处理。<br/>
 参数p是指向vdbe的指针，op是需要添加的操作码，p1、p2、p3分别对应操作数1、操作数2、操作数3，zP4如果参数p4type>=0，那么zP4是动态的，它是由一个sqlite3_malloc()分配的内存字符串。如果p4type ==0，P4的操作数由zP4确定，并且包含第一个null byte。如果p4type >0，那么P4的操作数是zP4的前n+1byte；如果p4type ==P4_KEYINFO，那么zP4代表一个指向KeyInfo结构的指针。这个指针指向的是由sqlite3_malloc()分配的KeyInfo结构的内存副本。当vdbe销毁时，该空间将被释放。如果是p4type是其他值（P4_STATIC， P4_COLLSEQ等），表示zP4指向的是在vdbe生命周期中存在的一个字符串或结构。在这种情况，直接复制该指针即可；如果addr<0，那么将P4设置为刚插入的指令。<br/>
