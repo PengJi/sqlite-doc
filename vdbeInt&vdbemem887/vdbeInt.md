@@ -32,7 +32,7 @@ typedef struct Explain Explain;
 ```
 
 ## 几个重要结构体的分析
-```
+```c
 struct VdbeCursor(vdbe游标)
 struct VdbeFrame（vdbe框架）
 struct Mem（仅对vdbe可见的数据结构）
