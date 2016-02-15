@@ -1,4 +1,6 @@
 # 析构函数
+<font face="微软雅黑" size="3px">
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;函数VdbeOp *sqlite3VdbeTakeOpArray(Vdbe *p， int *pnOp， int *pnMaxArg)
 该函数返回vdbe的操作码数组的指针。它可以被vdbeFreeOpArray()调用来释放操作码数组的空间。在返回前，参数pnOp被设置为返回数组中的元素数量。pnMaxArg被设置为当前数组中的最大值。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;函数static void freeEphemeralFunction(sqlite3 *db， FuncDef *pDef)
