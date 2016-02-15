@@ -1,9 +1,9 @@
 # vdbe.c文件内容
 <font face="微软雅黑" size="3px">
 
-vdbe.c文件中存放着VDBE的执行方法（sqlite3VdbeExec），这是VDBE的核心，也是SQLite的核心，SQL解析器生成一个程序然后由VDBE执行SQL语句的工作。VDBE程序在形式上类似于汇编语言。VDBC程序由一系列线性操作组成，每个操作都有1个操作码和5个操作数，操作数P1,P2,P3是整数，操作数P4是一个以null结尾的字符串，操作数P5是一个无符号字符。sqlite3VdbeExec函数用于解析VDBE程序指令,但  是要建立一个程序指令还需要其它文件里的函数的帮助和支撑。
-        下面是sqlite3VdbeExec函数的说明：
-```
+vdbe.c文件中存放着VDBE的执行方法（sqlite3VdbeExec），这是VDBE的核心，也是SQLite的核心，SQL解析器生成一个程序然后由VDBE执行SQL语句的工作。VDBE程序在形式上类似于汇编语言。VDBC程序由一系列线性操作组成，每个操作都有1个操作码和5个操作数，操作数P1,P2,P3是整数，操作数P4是一个以null结尾的字符串，操作数P5是一个无符号字符。sqlite3VdbeExec函数用于解析VDBE程序指令,但  是要建立一个程序指令还需要其它文件里的函数的帮助和支撑。  
+下面是sqlite3VdbeExec函数的说明：
+```c
     int sqlite3VdbeExec( Vdbe *p) {                    /* The VDBE */
       int pc=0;                  /* 程序计数器 */
       Op *aOp = p->aOp;          /* p->aOp的复本 */
