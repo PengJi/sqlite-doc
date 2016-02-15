@@ -2,13 +2,11 @@
 <font face="微软雅黑" size="3px">
 
 这里简要介绍了SQLite的使用方法.  
-
-1.建立一个新的数据库<br>
-在shell或者DOS命令行下输入:"sqlite3 test.db". 这将建立一个新的名为"test.db"的数据库文件.(可以使用不同的数据库名)<br>
-在命令行提示符中输入SQL命令创建并分配数据库空间.<br>
-更多相关内容请参考第X章.<br>
-
-2.编写一个使用SQLite的示例程序<br>
+1. 建立一个新的数据库<br>
+在shell或者DOS命令行下输入:"sqlite3 test.db". 这将建立一个新的名为"test.db"的数据库文件.(可以使用不同的数据库名)
+在命令行提示符中输入SQL命令创建并分配数据库空间.
+更多相关内容请参考第X章.  
+2. 编写一个使用SQLite的示例程序
 以下是一个演示如何使用SQLite的TCL接口的TCL程序.该程序通过执行SQL语句建立一个由两个参数定义的数据库.首先程序定位并执行第7行sqlite3命令打开并创建一个db对象。通过eval方法将SQL语句绑定到db对象并执行.最后关闭数据库连接.
 <pre>
 01  #!/usr/bin/tclsh
@@ -28,7 +26,7 @@
 </pre>
 
 下面是一个演示如何使用SQLite C/C++接口的C程序.<br>第一个参数表示数据库的名称,第二个参数表示需要执行的SQL语句.
-<pre>
+```c
 01  #include <stdio.h>
 02  #include <sqlite3.h>
 03
@@ -64,4 +62,4 @@
 33    sqlite3_close(db);
 34    return 0;
 35  }
-</pre>
+```
