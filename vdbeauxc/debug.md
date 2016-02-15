@@ -27,25 +27,26 @@ while( (pOp = opIterNext(&sIter)) ){
    }
 sqlite3DbFree(v->db， sIter.apSub);
 ```
-（2）显示部分
-操作码追踪功能由函数void sqlite3VdbeTrace(Vdbe *p， FILE *trace)实现.
+（2）显示部分  
+操作码追踪功能由函数`void sqlite3VdbeTrace(Vdbe *p， FILE *trace)`实现.
 trace是保存指令流的文件，通过访问该指针可以得到指令的执行过程。
-打印单个操作码功能由函数void sqlite3VdbePrintOp(FILE *pOut， int pc， Op *pOp)实现。<br>
-（3）操作部分
-1）得到当前地址操作码
-该功能功能由函数VdbeOp *sqlite3VdbeGetOp(Vdbe *p， int addr)实现。<br>
+打印单个操作码功能由函数`void sqlite3VdbePrintOp(FILE *pOut， int pc， Op *pOp)`实现。  
+（3）操作部分  
+1）得到当前地址操作码  
+该功能功能由函数`VdbeOp *sqlite3VdbeGetOp(Vdbe *p， int addr)`实现。  
 该函数实现了根据给定地址addr返回对应的操作码，如果地址为-1，那么返回最近插入的操作码。如果在调用该函数之前出现内存分配错误，那么将返回一个虚拟的操作码，尽管该操作码是一个可写的值，但是该操作码是只读的。返回的虚拟操作码可以保证在出现内存不足错误且不验证返回值是否为有效的情况下继续运行。但是由于虚拟操作码是0，该操作码不会被写入新值。这是由代码审查程序Valgrind验证通过的。
 2）交换两个vdbe的所有内容
-该功能由函数void sqlite3VdbeSwap(Vdbe *pA， Vdbe *pB)实现。
+该功能由函数`void sqlite3VdbeSwap(Vdbe *pA， Vdbe *pB)`实现。
 3）程序验证
 该功能由函数int sqlite3VdbeAssertMayAbort(Vdbe *v， int mayAbort)实现
 验证VM中的与pParse解析器相关联的程序是否出现ABORT异常。该异常由语句产生，但是该异常不需要所有事物都回滚。如果主程序或者子程序出现以下条件，那么该异常可能会发生。
-*  OP_Halt with P1=SQLITE_CONSTRAINT and P2=OE_Abort。
-*  OP_HaltIfNull with P1=SQLITE_CONSTRAINT and P2=OE_Abort。
-*  OP_Destroy
-*  OP_VUpdate
-*  OP_VRename
-*  OP_FkCounter with P2==0 (immediate foreign key constraint)
+* OP_Halt with P1=SQLITE_CONSTRAINT and P2=OE_Abort。
+* OP_HaltIfNull with P1=SQLITE_CONSTRAINT and P2=OE_Abort。
+* OP_Destroy
+* OP_VUpdate
+* OP_VRename
+* OP_FkCounter with P2==0 (immediate foreign key constraint)
+
 当ABORT异常发生，或者没有发生时验证解析器mayAbort域的值是否为真。如果匹配则返回真，否则返回假。这个函数将作为编译器中一个assert语句。它可以这样使用
 assert( sqlite3VdbeAssertMayAbort(pParse->pVdbe， pParse->mayAbort) );
 在该函数执行过程中，可能会出现内存分配失败的情况，当内存分配失败后，循环语句不会遍历所有的操作码。这样会导致hasAbort参数设置错误。因此在出现内存分配失败的情况时返回mallocFailed
