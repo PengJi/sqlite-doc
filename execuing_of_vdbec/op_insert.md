@@ -1,8 +1,9 @@
 # OP_Insert
-下图是OP_Insert的内容:
+<font face="微软雅黑" size="3px">
 
-  ![]( 4-5-15.jpg)
-  ```
+下图是OP_Insert的内容:
+![]( 4-5-15.jpg)
+```
   case OP_Insert : {
 	 Mem *pData= &aMem[pOp->p2];
 	 VdbeCursor *pC =p->apCsr[pOp->p1];
