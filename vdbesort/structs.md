@@ -19,18 +19,20 @@ struct VdbeSorter {
         UnpackedRecord *pUnpacked; /*用来解包keys*/
     };
 ```
-	（2）下面这个结构体是这是本源文件开头处声明的第1个结构体的定义，定义了PMA的iterator，把当前的key储存在变量nKey/aKey中，若iterator在EOF处，sqlite3_file类型的指针pFile==0。<br>
+（2）下面这个结构体是这是本源文件开头处声明的第1个结构体的定义，定义了PMA的iterator，把当前的key储存在变量nKey/aKey中，若iterator在EOF处，sqlite3_file类型的指针pFile==0。  
+```c
 	struct VdbeSorterIter {<br>
-  		i64 iReadOff; /*当前读偏移量*/<br>
-  		i64 iEof; /*此变量位于EoF后面，距离EoF一个字节*/<br>
-  		int nAlloc;/* aAlloc处空间的字节数*/<br>
+  		i64 iReadOff; /*当前读偏移量*/
+  		i64 iEof; /*此变量位于EoF后面，距离EoF一个字节*/
+  		int nAlloc;/* aAlloc处空间的字节数*/
  		 int nKey; /* key占用的字节数*/<br>
-  		sqlite3_file *pFile; /*此指针所指的地方是ｉｔｅｒａｔｏｒ开始读的地方*/<br>
-  		u8 *aAlloc; /*已经分配出去的空间*/<br>
-  		u8 *aKey; /*指向当前ｋｅｙ的指针*/<br>
-  		u8 *aBuffer; /*当前的读缓存*/<br>
-  		int nBuffer; /*读缓存的字节数*/<br>
-};<br>
+  		sqlite3_file *pFile; /*此指针所指的地方是iterator开始读的地方*/
+  		u8 *aAlloc; /*已经分配出去的空间*/
+  		u8 *aKey; /*指向当前ｋｅｙ的指针*/
+  		u8 *aBuffer; /*当前的读缓存*/
+  		int nBuffer; /*读缓存的字节数*/
+};
+```
 	(3)下面这个结构体的实例用来组织记录流，是本源文件开头处声明的第3个结构体的定义这些记录流将按照mergecod的算法写入到文件中的对齐的、页面大小的块中。
 	struct FileWriter {<br>
 		int eFWErr; /*当处于错误状态时是个非零值*/<br>
