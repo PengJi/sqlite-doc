@@ -8,7 +8,7 @@
 更多相关内容请参考第X章.  
 2. 编写一个使用SQLite的示例程序
 以下是一个演示如何使用SQLite的TCL接口的TCL程序.该程序通过执行SQL语句建立一个由两个参数定义的数据库.首先程序定位并执行第7行sqlite3命令打开并创建一个db对象。通过eval方法将SQL语句绑定到db对象并执行.最后关闭数据库连接.
-<pre>
+```c
 01  #!/usr/bin/tclsh
 02  if {$argc!=2} {
 03  puts stderr "Usage: %s DATABASE SQL-STATEMENT"
@@ -23,7 +23,7 @@
 12    puts ""
 13  }
 14  db close
-</pre>
+```
 
 下面是一个演示如何使用SQLite C/C++接口的C程序.<br>第一个参数表示数据库的名称,第二个参数表示需要执行的SQL语句.
 ```c
