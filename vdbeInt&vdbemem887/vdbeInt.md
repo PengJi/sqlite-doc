@@ -4,7 +4,7 @@
 它是vdbe.c的私有头文件，定义了VDBE的常用数据结构。
 主要包含：一些结构体和方法的声明或者预定义
 ## 一些方法和结构体的条件编译和预处理
-```
+```c
 typedef struct VdbeOp Op;
 
 /*
@@ -16,7 +16,6 @@ typedef unsigned char Bool;
 **Opaque类型被vdbesort.c文件中的代码使用
 */
 typedef struct VdbeSorter VdbeSorter;```
-
 ```
 
 /* Opaque type used by the explainer 这个类型被解释器使用*/
