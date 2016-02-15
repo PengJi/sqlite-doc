@@ -25,7 +25,7 @@ struct VdbeSorter {
   		i64 iReadOff; /*当前读偏移量*/
   		i64 iEof; /*此变量位于EoF后面，距离EoF一个字节*/
   		int nAlloc;/* aAlloc处空间的字节数*/
- 		 int nKey; /* key占用的字节数*/<br>
+ 		int nKey; /* key占用的字节数*/<br>
   		sqlite3_file *pFile; /*此指针所指的地方是iterator开始读的地方*/
   		u8 *aAlloc; /*已经分配出去的空间*/
   		u8 *aKey; /*指向当前ｋｅｙ的指针*/
