@@ -17,7 +17,7 @@ typedef unsigned char Bool;
 */
 typedef struct VdbeSorter VdbeSorter;```
 ```
-
+```c
 /* Opaque type used by the explainer 这个类型被解释器使用*/
 typedef struct Explain Explain;
 #define MEM_Null      0x0001   /* Value is NULL */
@@ -28,7 +28,8 @@ typedef struct Explain Explain;
 #define MEM_RowSet    0x0020   /* Value is a RowSet object 值为一个行设置对象*/
 #define MEM_Frame     0x0040   /* Value is a VdbeFrame object 值为一个Vdbe框架对象*/
 #define MEM_Invalid   0x0080   /* Value is undefined */
-#define MEM_TypeMask  0x00ff   /* Mask of type bits 隐藏类型的二进制数*/```
+#define MEM_TypeMask  0x00ff   /* Mask of type bits 隐藏类型的二进制数*/
+```
 
 ## 几个重要结构体的分析
 ```
