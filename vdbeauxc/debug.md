@@ -48,12 +48,14 @@ trace是保存指令流的文件，通过访问该指针可以得到指令的执
 * OP_FkCounter with P2==0 (immediate foreign key constraint)
 
 当ABORT异常发生，或者没有发生时验证解析器mayAbort域的值是否为真。如果匹配则返回真，否则返回假。这个函数将作为编译器中一个assert语句。它可以这样使用
-assert( sqlite3VdbeAssertMayAbort(pParse->pVdbe， pParse->mayAbort) );
+`assert( sqlite3VdbeAssertMayAbort(pParse->pVdbe， pParse->mayAbort) );`
 在该函数执行过程中，可能会出现内存分配失败的情况，当内存分配失败后，循环语句不会遍历所有的操作码。这样会导致hasAbort参数设置错误。因此在出现内存分配失败的情况时返回mallocFailed
 4）修改操作码注释
-该功能由函数static void vdbeVComment(Vdbe *p， const char *zFormat， va_list ap)
-void sqlite3VdbeComment(Vdbe *p， const char *zFormat， …)
-void sqlite3VdbeNoopComment(Vdbe *p， const char *zFormat， …)实现。
+该功能由函数  
+`static void vdbeVComment(Vdbe *p， const char *zFormat， va_list ap)`  
+`void sqlite3VdbeComment(Vdbe *p， const char *zFormat， …)`  
+`void sqlite3VdbeNoopComment(Vdbe *p， const char *zFormat， …)`  
+实现。
 以上函数用于改变最近指令编码的注释。或者插入一个No-op并添加注释到这个新的指令中。这样便于调分辨编码的内容。
 5）返回当前设置的SQL语句
 该功能由函数const char *sqlite3_sql(sqlite3_stmt *pStmt)实现。
