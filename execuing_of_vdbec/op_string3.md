@@ -1,7 +1,8 @@
 # OP_String
-下图是OP_String的内容:
+<font face="微软雅黑" size="3px">
 
- ![]( 4-5-28.jpg)
+下图是OP_String的内容:  
+![]( 4-5-28.jpg)
 case OP_String : {
 	 pOut->flags = MEM_Str|MEM_Static|MEM_Term;
   	pOut->z = pOp->p4.z;
