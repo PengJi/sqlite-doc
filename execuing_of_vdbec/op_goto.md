@@ -4,7 +4,7 @@
 下图是OP_Goto的内容:
 
  ![](4-5-4.jpg)
-```c
+```
 case OP_Goto: {
 	pc = pOp->p2 - 1;
 }```
