@@ -1,8 +1,9 @@
 # OP_Copy
-下图是OP_Copy的内容:
+<font face="微软雅黑" size="3px">
 
- ![]( 4-5-27.jpg)
- ```
+下图是OP_Copy的内容:  
+![]( 4-5-27.jpg)
+```
  case OP_Copy : {
 	int n = pOp->p3;
   	pIn1 = &aMem[pOp->p1];
