@@ -35,7 +35,7 @@ struct VdbeSorterIter {
 ```
 (3)下面这个结构体的实例用来组织记录流，是本源文件开头处声明的第3个结构体的定义这些记录流将按照mergecod的算法写入到文件中的对齐的、页面大小的块中。  
 ```c
-	struct FileWriter {<br>
+	struct FileWriter {
 		int eFWErr; /*当处于错误状态时是个非零值*/
 		u8 *aBuffer;/*指向写缓存的指针*/
 		int nBuffer; /*写缓存的字节数*/
