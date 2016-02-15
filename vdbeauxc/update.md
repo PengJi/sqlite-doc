@@ -1,4 +1,5 @@
 # 相关修改函数
+//对应于操作码的操作数为3个，但是有特定的操作码类型的情况<br/>
 （1）操作数修改函数<br/>
 void sqlite3VdbeChangeP1(Vdbe *p， u32 addr， int val)<br/>
 void sqlite3VdbeChangeP2(Vdbe *p， u32 addr， int val)<br/>
