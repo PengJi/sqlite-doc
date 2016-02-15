@@ -1,8 +1,9 @@
 # OP_Close
-下图是OP_Close的内容:
+<font face="微软雅黑" size="3px">
 
+下图是OP_Close的内容:  
  ![]( 4-5-17.jpg)
- ```
+```
  case OP_Close : {
 	 sqlite3VdbeFreeCursor(p, p->apCsr[pOp->p1]);
   	 p->apCsr[pOp->p1] = 0;
