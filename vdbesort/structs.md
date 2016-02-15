@@ -33,16 +33,18 @@ struct VdbeSorterIter {
   		int nBuffer; /*读缓存的字节数*/
 };
 ```
-	(3)下面这个结构体的实例用来组织记录流，是本源文件开头处声明的第3个结构体的定义这些记录流将按照mergecod的算法写入到文件中的对齐的、页面大小的块中。
+(3)下面这个结构体的实例用来组织记录流，是本源文件开头处声明的第3个结构体的定义这些记录流将按照mergecod的算法写入到文件中的对齐的、页面大小的块中。  
+```c
 	struct FileWriter {<br>
-		int eFWErr; /*当处于错误状态时是个非零值*/<br>
-		u8 *aBuffer;/*指向写缓存的指针*/<br>
-		int nBuffer; /*写缓存的字节数*/<br>
-		int iBufStart; /*缓存中要写入的第一个字节*/<br>
-		int iBufEnd; /*缓存中要写入的最后一个缓存*/<br>
-		i64 iWriteOff;/*缓存开始处在文件中的偏移量*/<br>
-		sqlite3_file *pFile; /*此指针指向将被写入数据的文件的指针*/<br>
-	};<br>
+		int eFWErr; /*当处于错误状态时是个非零值*/
+		u8 *aBuffer;/*指向写缓存的指针*/
+		int nBuffer; /*写缓存的字节数*/
+		int iBufStart; /*缓存中要写入的第一个字节*/
+		int iBufEnd; /*缓存中要写入的最后一个缓存*/
+		i64 iWriteOff;/*缓存开始处在文件中的偏移量*/
+		sqlite3_file *pFile; /*此指针指向将被写入数据的文件的指针*/
+	};
+```
 (4)下面这个结构体用来存储一个单独的记录。所有内存中的记录被连接成一个链表，链表的头SorterRecord *pRecord由指针SorterRecord *pNext指向。
 	struct SorterRecord<br> {//这是本源文件开头处声明的第2个结构体的定义<br>
   		void *pVal;<br>
