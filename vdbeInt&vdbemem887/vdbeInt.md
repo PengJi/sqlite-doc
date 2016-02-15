@@ -15,7 +15,7 @@ typedef unsigned char Bool;
 /* Opaque type used by code in vdbesort.c
 **Opaque类型被vdbesort.c文件中的代码使用
 */
-typedef struct VdbeSorter VdbeSorter;```
+typedef struct VdbeSorter VdbeSorter;
 ```
 ```c
 /* Opaque type used by the explainer 这个类型被解释器使用*/
