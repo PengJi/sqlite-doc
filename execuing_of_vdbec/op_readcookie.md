@@ -1,10 +1,8 @@
 # OP_ReadCookie
 <font face="微软雅黑" size="3px">
 
-下图是OP_ReadCookie的内容:
-
+下图是OP_ReadCookie的内容:  
 ![](4-5-5.jpg)
-
 ```
 case OP_ReadCookie: {
 	int iMeta;
