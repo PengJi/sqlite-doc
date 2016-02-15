@@ -65,7 +65,7 @@ struct VdbeFrame {
 }
 ```
 一个虚拟机框架对象的内存由父框架的一个存储单元中被分配和管理。当内存单元被删除或者重写，虚拟机框架对象不会被立即释放。相反的，它将被链接到Vdbe.pDelFrame清单中。当虚拟机在中重启后，Vdbe.pDelFrame的目录清单被删除。这么做而不是立刻删除虚拟机框架对象是为了避免当属于子框架的存储单元被释放时循环调用sqlite3VdbeMemRelease()方法。
-```
+```c
 struct Vdbe｛
   sqlite3 *db;
   Op *aOp；
@@ -73,7 +73,8 @@ struct Vdbe｛
   Mem **apArg（参数）
   Mem *aColName;
   Mem *pResultSet;
-  …｝```
+  …｝
+```
 
 
 
