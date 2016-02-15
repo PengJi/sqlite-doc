@@ -1,4 +1,6 @@
 # vdbe执行中的处理
+<font face="微软雅黑" size="3px">
+
 （1）函数void sqlite3VdbeSetNumCols(Vdbe *p, int nResColumn){}和
 int sqlite3VdbeSetColName( Vdbe *p,int idx,int var,const char *zName,void (*xDel)(void*) ){}
 这两个函数用来设置结果列的数目和名称。vdbe在处理SQL请求的时候会产生多列的结果，这时就需要设置结果列的数目和名称，从而返回给用户一个明确的结果。第一个函数要在编译时设置，而不是在vdbe的处理过程中设置，如此以便sqlite3_column_count()能够在sqlite3_step()之前被一个SQL声明所调用。第二个函数必须要在qlite3VdbeSetNumCols()之后调用。
