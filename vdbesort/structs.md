@@ -21,7 +21,7 @@ struct VdbeSorter {
 ```
 （2）下面这个结构体是这是本源文件开头处声明的第1个结构体的定义，定义了PMA的iterator，把当前的key储存在变量nKey/aKey中，若iterator在EOF处，sqlite3_file类型的指针pFile==0。  
 ```c
-	struct VdbeSorterIter {<br>
+	struct VdbeSorterIter {
   		i64 iReadOff; /*当前读偏移量*/
   		i64 iEof; /*此变量位于EoF后面，距离EoF一个字节*/
   		int nAlloc;/* aAlloc处空间的字节数*/
