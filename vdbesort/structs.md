@@ -1,6 +1,7 @@
 # 结构体定义
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;1.结构体vdbesorter的定义<br>
+<font face="微软雅黑" size="3px">
+
+1.结构体vdbesorter的定义<br>
 （1）struct VdbeSorter {<br>
   		i64 iWriteOff; /* 文件ptemp1（存储PMA的文件）中，当前的写偏移量*/<br>
  	    i64 iReadOff; /*文件ptemp1（PMA file 1）中，当前的读偏移量*/<br>
