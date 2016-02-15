@@ -1,10 +1,9 @@
 # OP_OpenWrite
+<font face="微软雅黑" size="3px">
+
 下图是OP_OpenWrite的内容:
-
- ![]( 4-5-12.jpg)
-
-
-  ```
+![]( 4-5-12.jpg)
+```
 case OP_OpenWrite : {
 	int nField = pOp->p4.i;
   	int p2 = pOp->p2, iDb = pOp->p3; ;
