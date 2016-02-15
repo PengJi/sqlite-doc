@@ -56,7 +56,7 @@ trace是保存指令流的文件，通过访问该指针可以得到指令的执
 `void sqlite3VdbeComment(Vdbe *p， const char *zFormat， …)`  
 `void sqlite3VdbeNoopComment(Vdbe *p， const char *zFormat， …)`  
 实现。
-以上函数用于改变最近指令编码的注释。或者插入一个No-op并添加注释到这个新的指令中。这样便于调分辨编码的内容。
+以上函数用于改变最近指令编码的注释。或者插入一个No-op并添加注释到这个新的指令中。这样便于调分辨编码的内容。  
 5）返回当前设置的SQL语句
 该功能由函数`const char *sqlite3_sql(sqlite3_stmt *pStmt)`实现。
 返回值保存在vdbe由pStmt转换而来。
