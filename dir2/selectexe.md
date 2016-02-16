@@ -1,4 +1,6 @@
 # SQLite中SQL语句执行步骤
+<font face="微软雅黑" size="3px">
+
 给定一个SQL语句,SQLite首先对其词法分析（该部分手动编码实现）、语法分析（使用第三方文法分析器生成工具Lemon）以及语义分析（sqlite3SelectNew()中生成SELECT结构体，在sqlite2Select()中处理）。
 <br>然后生成执行计划：
 <br>（a）处理对象：提取查询语法树的FROM部分生成的语法树（包含FROM中表的信息），WHERE部分的语法树（包含WHERE中所有表达式的信息）组成的pTabList语法树。
