@@ -1,4 +1,6 @@
 # 使用给定的代码和参数的授权检查
+<font face="微软雅黑" size="3px">
+
 函数说明
 <pre>
 int sqlite3AuthCheck(
