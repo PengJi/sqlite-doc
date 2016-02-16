@@ -1,4 +1,6 @@
 # 验证数据库中表的列信息是否可访问
+<font face="微软雅黑" size="3px">
+
 函数说明
 <pre>
 int sqlite3AuthReadCol(
