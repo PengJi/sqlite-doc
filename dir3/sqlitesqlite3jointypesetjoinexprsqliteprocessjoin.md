@@ -1,4 +1,6 @@
 # SQLite中sqlite3JoinType函数，setJoinExpr函数与sqliteProcessJoin函数
+<font face="微软雅黑" size="3px">
+
 sqlite3JoinType预定义连接类型，setJoinExpr设置连接类型，sqliteProcessJoin处理连接的表。
 <br> sqlite3JoinType函数：声明各种连接的类型。解析SELECT的连接操作符，再与该函数的连接类型对应起来。默认为内连接。
 <pre> / 注：这个函数为了确定连接的种类。根据连接的关键字处理连接的类  型。返回的整数代表连接的类型，而在处理关键字的过程中检测到错误，
