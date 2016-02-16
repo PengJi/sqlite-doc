@@ -1,4 +1,6 @@
 # 验证解析树中TK_COLUMN表达式是否可访问
+<font face="微软雅黑" size="3px">
+
 函数说明
 <pre>
 void sqlite3AuthRead(
