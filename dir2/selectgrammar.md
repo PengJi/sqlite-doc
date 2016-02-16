@@ -1,4 +1,6 @@
 # SELECT的语法图
+<font face="微软雅黑" size="3px">
+
  <img src="../image/select1.png"/>
  上图只是语法的书写顺序，而select的执行顺序：
 1.	  FROM
