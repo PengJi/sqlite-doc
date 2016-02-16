@@ -1,4 +1,6 @@
 # 设置或清除访问授权
+<font face="微软雅黑" size="3px">
+
 函数说明
 <pre>int sqlite3_set_authorizer(sqlite3 *db,
   int (*xAuth)(void*,int,const char*,const char*,const char*,const char*), void *pArg)</pre>
