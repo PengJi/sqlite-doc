@@ -1,4 +1,6 @@
 # ON子句
+<font face="微软雅黑" size="3px">
+
 &nbsp;&nbsp;&nbsp;&nbsp;On子句优先级仅次于from，用于内连接和外连接，写成join on的形式。比如 :
 <pre>
      from table1 inner join table2 on table1.name=table2.name;
