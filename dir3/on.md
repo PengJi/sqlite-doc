@@ -1,4 +1,6 @@
 # ON子句具体使用
+<font face="微软雅黑" size="3px">
+
 1.inner join（内连接）：<br>
 表test
 <img src="../image/on1.png"/>
