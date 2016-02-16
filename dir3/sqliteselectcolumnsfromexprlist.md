@@ -1,4 +1,6 @@
 # SQLite中FROM子句的实现
+<font face="微软雅黑" size="3px">
+
 在SQLite中FROM子句功能是由函数selectColumnsFromExprList函数实现的.<br>
 selectColumnsFromExprList函数将将from后跟的表达式列表拆分，然后根据连接类型，调用连接函数，对表进行连接。<br>
 注：连接主要看on部分，from默认连接方式  只有一种，采用inner join的方式。<br>
