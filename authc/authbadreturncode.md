@@ -1,4 +1,6 @@
 # 授权返回一个非法的值
+<font face="微软雅黑" size="3px">
+
 函数说明
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;static void sqliteAuthBadReturnCode(Parse *pParse)
