@@ -1,4 +1,6 @@
 # 文件结构
+<font face="微软雅黑" size="3px">
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OS\_unix.c是一个与操作系统接口相关的底层文件。它包含包括Linux，MacOSX，\* BSD，QNX，VxWorks，AIX，HPUX等类Unix操作系统的VFS实现。VFS的作用就是采用标准的Unix系统调用读写位于不同物理介质上的不同文件系统，让open()、read()、write()等系统调用不用关心底层的存储介质和文件系统类型。实际上在这个文件中有几种不同的VFS实现，其差异在于文件加锁的方式。默认的实现是使用Posix咨询锁，替代实现使用flock()，dot文件，各种专有锁定模式，或者只是跳过锁定在一起。这个文件的布局如下所示：<br>
 ——通用的声明和实用功能 <br>
 ——VxWorks 所使用的唯一的文件ID逻辑<br>
