@@ -1,4 +1,6 @@
 # SQLite在Windows系统上的锁机制实现流程
+<font face="微软雅黑" size="3px">
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;os_win.c文件中的核心实现在于对数据库锁机制的实现，为了便于进一步理解，下面我将对整个锁机制在windows平台上的实现流程进行分析。
 
 (1)初始状态
