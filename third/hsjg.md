@@ -1,4 +1,6 @@
 # 简析os_win.c文件的函数结构
+<font face="微软雅黑" size="3px">
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;os_win.c文件的主函数主要是为sqlite3_os_init()函数和最后的sqlite3_os_end()函数。sqlite3_os_init()函数用以初始化操作系统接口，而sqlite3_os_end()函数则用于结束初始化窗口。sqlite3_os_init()函数中所包含的调用到的函数是该文件的核心部分。其调用的主要函数作用如表所示。
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sqlite3_os_end()函数主要是用于结束初始化操作系统接口，并未调用其他功能函数。
