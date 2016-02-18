@@ -1,4 +1,6 @@
 # 功能的主要实现
+<font face="微软雅黑" size="3px">
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;该文件对于功能的实现主要是通过一系列的函数和结构体。该文件的主线函数是sqlite3\_os\_init()，初始化操作系统接口，这个程序为所有类Unix操作系统的VFS实现注册。这个程序和紧随其后的sqlite3\_os\_end()程序是本文件中对其他文件可见的唯一程序，这个程序在SQLite初始化时便会通过单线程调用。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这个文件挂载了一些VFS（虚拟文件系统），每个VFS都包含一套系统调用的接口：<br>
 \#define UNIXVFS(VFSNAME, FINDER) {<br>
