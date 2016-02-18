@@ -1,4 +1,6 @@
 # 简析SQLite的锁机制
+<font face="微软雅黑" size="3px">
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SQLite在 windows平台上的使用来自于os_win.c文件的实现，但要实现对数据库的操作，其核心在于SQLite的锁机制。
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SQLite采用粗放型的锁。当一个连接要写数据库时，所有其他的连接被锁住，直到写连接结束了它的事务。SQLite有一个加锁表，来帮助不同的写数据库者能够在最后一刻再加锁，以保证最大的并发性。
