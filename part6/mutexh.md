@@ -1,4 +1,5 @@
 # mutex.h
+<font face="微软雅黑" size="3px">
 
 申明了一系列的函数，需声明SQLITE_MUTEX_OMIT，表示只使用申明函数，而不具体实现，因为SQLITE_MUTEX_OMIT这种状态不使用互斥体，故只需申明即可。文件主要包含互斥体使用函数申明，具体的实现在mutex.c里面。
 
