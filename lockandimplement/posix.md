@@ -1,4 +1,6 @@
 # POSIX locking
+<font face="微软雅黑" size="3px">
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;POSIX locking（POSIX咨询锁）主要依靠设计。ANSI标准1003.1(1996)部分6.5.2.2 的483到490行规定，当一个进程设置或者清除一个锁的时候，这个操作将会覆盖任何之前由相同进程设置的锁。它并没有明确地说明，但是这意味着它将覆盖通过同一进程使用一个不同的文件描述符设置的锁。例如：<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int fd1 = open("./file1"， O\_RDWR|O\_CREAT， 0644);<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int fd2 = open("./file2"， O\_RDWR|O\_CREAT， 0644);<br>
