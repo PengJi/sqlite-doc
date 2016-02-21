@@ -1,4 +1,6 @@
 # SQLite锁机制简介
+<font face="微软雅黑" size="3px">
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SQLite 采用粗放型的锁。当一个连接要写数据库，所有其它的连接被锁住，直到写连接结束了它的事务。SQLite 有一个加锁表，来帮助不同的写数据库都能够在最后一刻再加锁，以保证最大的并发性。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SQLite 使用锁逐步上升机制，为了写数据库，连接需要逐级地获得排它锁。SQLite 有 5 个不同的锁状态：未加锁(UNLOCKED)、共享 (SHARED)、保留 (RESERVED)、未 决(PENDING)  和排它(EXCLUSIVE)。每个数据库连接在同一时刻只能处于其中一个状态。每种状态(未加锁状态除外)都有一种锁与之对应。锁的状态以及状态的转换如下图所示：<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最初的状态是未加锁状态，在此状态下，连接还没有存取数据库。当连接到了一个数据库，甚至已经用BEGIN 开始了一个事务时，连接都还处于未加锁状态。<br>
