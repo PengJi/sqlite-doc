@@ -1,4 +1,5 @@
 # date.c模块源码分析（6）--（7）
+<font face="微软雅黑" size="3px">
 
 （6）currentTimeFunc函数这个函数使用C-library中time()，gmtime()和strftime()函数。这个格式字符串被作为用户数据提供给strftime()函数。
 （7）sqlite3RegisterDateTimeFunctions函数注册所有上述C函数作为SQL的函数。
