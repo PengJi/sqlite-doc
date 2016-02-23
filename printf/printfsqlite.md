@@ -1,4 +1,6 @@
 #  Printf分析
+<font face="微软雅黑" size="3px">
+
 我们通过SQLite的体系来简单介绍Printf在SQLite的作用，图一为SQLite的体系结构。
 
 <img src="p1.jpg">
