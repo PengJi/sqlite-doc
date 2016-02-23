@@ -1,4 +1,6 @@
 # SQLite的虚拟机
+<font face="微软雅黑" size="3px">
+
 ## 1、虚拟机（Virtual Machine）
 
 VDBE是SQLite的核心，它的上层模块和下层模块都是本质上都是为它服务的。它的实现位于vbde.c, vdbe.h, vdbeapi.c, vdbeInt.h, 和vdbemem.c几个文件中。它通过底层的基础设施B+Tree执行由编译器（Compiler）生成的字节代码，这种字节代码程序语言(bytecode programming lauguage)是为了进行查询，读取和修改数据库而专门设计的。
