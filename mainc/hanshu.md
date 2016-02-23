@@ -1,5 +1,6 @@
 # Main.c
 # 函数功能
+<font face="微软雅黑" size="3px">
 
 const char *sqlite3ErrStr(int rc)
 
