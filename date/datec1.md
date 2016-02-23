@@ -1,4 +1,6 @@
 # date.c模块源码分析（1）-（5）
+<font face="微软雅黑" size="3px">
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SQLite 支持如下下面 5 个日期与时间函数：
 <br></br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;date(timestring, modifier, modifier, ...)<br></br>
