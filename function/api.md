@@ -1,4 +1,6 @@
 # 重要的API函数
+<font face="微软雅黑" size="3px">
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在Sqlite数据库中，可由程序直接调用相应的API函数去实现对数据的存取操作，SQLite 3.0一共有83个API函数,此外还有一些数据结构和预定义(#defines)。
 1）打开数据库，如果不存在则自动创建
 <img src="1.jpg">
