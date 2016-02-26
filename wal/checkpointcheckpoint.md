@@ -1,4 +1,6 @@
 # 检查点
+<font face="微软雅黑" size="3px">
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们最终会将追加在Wal文件中的说有事务写回到初始的数据库中，将Wal文件中事务写回到数据库中被叫做“检查点”。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;回滚和预写另一个不同是回滚日志有两个原语操作：读和写，而Wal有三个原语操作：读，写，检查点。默认的，Sqlite 当达到1000页这个阀值是就会自动的设置一个检查点。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sqllite Wal自动设置检查点编译时间 可以指定不同的默认值。使用Wal的程序不必为了使这些检查点产生而做任何事。但他们如果想设置检查点，可以调整自动设置检查点的阀值，他们可以关闭自动设置检查点在空闲时或在只有一个线程或进程时。<br>
