@@ -1,4 +1,6 @@
 # 校验
+<font face="微软雅黑" size="3px">
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;跟在WAL头上的是0到多个框。每个框由一个24字节的框头（frame-header）和一个页大小的页数据组成。框头是6个大端的32位无符号整数，如下：
 * 0: Page number.
 
