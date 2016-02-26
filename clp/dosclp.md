@@ -1,4 +1,6 @@
 # 命令行模式下的CLP
+<font face="微软雅黑" size="3px">
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关于命令行模式下的CLP，可以执行如导入/导出数据、返回结果集和一般的批处理工作。使用shell脚本来自动管理数据库是理想的使用方式。从shell（Windows或UNIX）上启动CLP -help，可以看到CLP在命令行模式下的一些功能。
 <img src="14.jpg">
 1）命令行中的CLP可以接受以下参数：<br>
