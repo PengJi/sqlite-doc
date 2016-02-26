@@ -1,4 +1,6 @@
 # 算术函数
+<font face="微软雅黑" size="3px">
+
 1.1输出最小值最大值minmaxFunc
 
 （1）函数头
