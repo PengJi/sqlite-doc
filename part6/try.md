@@ -1,4 +1,5 @@
 # 互斥体try使用
+<font face="微软雅黑" size="3px">
 
 例程企图进入一个互斥锁，sqlite3_mutex_enter()不被阻塞。互斥锁一旦成功键入，sqlite3_mutex_try()接口将返回一个标志位，这个标志位是 SQLITE_OK。
 
