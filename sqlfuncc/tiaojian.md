@@ -1,4 +1,6 @@
 # 条件判断函数
+<font face="微软雅黑" size="3px">
+
 3.1 static void nullifFunc(  sqlite3_context *context, int NotUsed,  sqlite3_value **argv)
 
 如果函数参数相同，返回NULL，否则返回第一个参数。
