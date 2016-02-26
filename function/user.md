@@ -1,4 +1,6 @@
 # 用户自定义函数
+<font face="微软雅黑" size="3px">
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可以使用以下的方法来创建用户自定义的SQL函数:
 
        typedef struct sqlite3_value sqlite3_value;
