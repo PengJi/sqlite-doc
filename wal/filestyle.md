@@ -1,4 +1,6 @@
 # Wal文件格式
+<font face="微软雅黑" size="3px">
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WAL日志包括一个头和0到多个框（frames），每个框记录一个页（page）修改的内容。对数据库所有的修改都通过修改框的方式写入WAL日志。单个的WAL日志可记录多个事务。WAL日志中的内容会定期修改到数据库文件中，这个操作成为检查点。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;单个WAL日志可多次使用。也就是说，WAL可以被框占满，当检查点动作过后，其他的框又能写到原来的位置上。WAL日志总是从开始到结尾顺序增长。附加到框后面的检查总数（checksums）和计数（counters）用来确定WAL中的那些框有效，哪些框是以前检查点动作操作完成的。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WAL头有32字节长，包括以下8个32位的大端无符号整数<br>
