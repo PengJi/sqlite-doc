@@ -1,4 +1,6 @@
 # 其他函数
+<font face="微软雅黑" size="3px">
+
 5.1数据的类型
 
 （1）static void typeofFunc(sqlite3_context *context, int NotUsed,  sqlite3_value**argv)
