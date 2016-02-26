@@ -1,4 +1,6 @@
 # 读事务
+<font face="微软雅黑" size="3px">
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;开始一个读事务时，读者记录WAL中最后一个有效的框的索引。读者用myFrame值记录所有的子顺序读操作。新的事务能被添加到WAl中，只要读者使用原始的myFrame值并且忽略新的增加的内容它将看到一个快照。这个技术允许多事务并行读不同的数据库内容。<br>
 <img src="read1.png"><br>
 读算法
