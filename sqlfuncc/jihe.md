@@ -1,4 +1,5 @@
 # 集合函数
+<font face="微软雅黑" size="3px">
 
 （1）static void avgFinalize(sqlite3_context *context)
 
