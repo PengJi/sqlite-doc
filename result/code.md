@@ -1,4 +1,6 @@
 # 结果代码
+<font face="微软雅黑" size="3px">
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;31个结果代码在sqlite3.h定义，按照字母顺序列出：
 <img src="1.jpg">
 1）SQLITE_BUSY：<br>
