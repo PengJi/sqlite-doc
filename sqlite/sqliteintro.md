@@ -1,5 +1,5 @@
 # SQLite简介
-<font face="微软雅黑" size="3px">
+<font face="微软雅黑" size="2px">
 
 　　SQLite，是一款轻型的数据库，是遵守ACID的关系数据库管理系统，SQLite是D.RichardHipp用C语言编写的开源嵌入式数据库引擎。它是完全独立的，不具有外部依赖性。它是作PHPV4.3中的一个选项引入的，构建在PHPV5中。SQLite支持多数SQL92标准，可以在所有主要的操作系统上运行，并且支持大多数计算机语言。  
 　　SQLite 对 SQL92 标准的支持包括索引、限制、触发和查看。SQLite 不支持外键限制，但支持原子的、一致的、独立的和持久的 (ACID) 事务。  
