@@ -1,5 +1,5 @@
 # SQLite特性
-<font face="微软雅黑" size="3px">
+<font face="微软雅黑">
 
 SQLite的特性主要有：  
 1. ACID事务。
