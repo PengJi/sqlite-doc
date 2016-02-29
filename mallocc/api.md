@@ -58,7 +58,6 @@
     void *sqlite3DbMallocRaw(sqlite3 *db, int n)
     int sqlite3DbMallocSize(sqlite3 *db, void *p)
 ```
-
 得到分配内存大小
 ```c
     void *sqlite3DbMallocZero(sqlite3 *db, int n)
