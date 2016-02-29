@@ -420,7 +420,7 @@
            * [mem2.c](mem/mem2c.md)
            * [mem3.c](mem/mem3c.md)
            * [mem5.c](mem/mem4c.md)
-       * [Mem3.c代码分析](part3/README.md)
+       * [Mem3.c](part3/README.md)
            * [Mem3.c功能概述](part3/mem3c.md)
            * [名词及相关概念](part3/3_1.md)
            * [块存储结构](part3/3_3.md)
