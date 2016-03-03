@@ -507,5 +507,5 @@
    * [条件判断函数](sqlfuncc/tiaojian.md)
    * [集合函数](sqlfuncc/jihe.md)
    * [其他函数](sqlfuncc/qita.md)
-*[SQLite C API]()
+* [SQLite C API](API/README.md)
 
