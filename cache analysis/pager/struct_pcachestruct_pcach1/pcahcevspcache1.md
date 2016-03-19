@@ -1,4 +1,6 @@
 # Struct PCache与Struct PCach1
+<font face="微软雅黑">
+
 <img src="../../pcache.png"/>
 图 3.1 Struct PCache源码截图  
 <img src="../../pcache1.png"/>   
