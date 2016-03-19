@@ -2,7 +2,7 @@
 <font face="微软雅黑" size="3px">
 
 下图是OP_String的内容:  
-![]( 4-5-24.jpg)
+![OP_String]( 4-5-24.jpg)
 ```
 case OP_String : {
 	 pOut->flags = MEM_Str|MEM_Static|MEM_Term;
