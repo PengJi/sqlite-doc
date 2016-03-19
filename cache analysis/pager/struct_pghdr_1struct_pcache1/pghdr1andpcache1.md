@@ -1,4 +1,6 @@
 # struct PgHdr1与struct PCache1
+<font face="微软雅黑">
+
 <img src="../../p35.png"/>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
