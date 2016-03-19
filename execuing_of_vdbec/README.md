@@ -1,4 +1,4 @@
-# 4.	结合SQLite执行过程详细介绍vdbe.c文件
+# 4.结合SQLite执行过程详细介绍vdbe.c文件
 <font face="微软雅黑" size="3px">
 
 为了对SQLite执行过程有一个更清晰的认识，我们使用接口部分提供的API函数，编写了一段基本的数据库操作代码，在visual studio环境下，结合着八个模块的顺序进行单步调试，在sqlite3VdbeExec函  数体内，我们也看到了switch语句的传值为pOp->opcode，所以我们重点观察opcode的生成过程和VDBE核心函数sqlite3VdbeExec的执行过程，代码如下：
