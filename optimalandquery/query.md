@@ -1,5 +1,5 @@
 # 在SQLite3下查询数据
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在分析select.c之前，先说明怎样在sqlite3下对表和数据进行查询。数据库中有数据才能查询，所有我们要先建立数据库和表。
+在分析select.c之前，先说明怎样在sqlite3下对表和数据进行查询。数据库中有数据才能查询，所有我们要先建立数据库和表。
 首先，启动sqlite3.exe，创建一个数据库，创建一个新数据库和打开一个已经存在的数据库命令是一样的，如果文件在当前目录下不存在，则新建；如果存在，则打开，命令为：.open 数据库名。例如；创建一个名为qihuidan的数据库，输入命令行：.open qihuidan，如图2.1所示。
 <img src="openDB.jpg">
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**图2.1 创建、打开数据库**<br>
