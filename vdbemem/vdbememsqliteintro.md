@@ -4,7 +4,7 @@
 SQLite的特性主要有：  
 1. ACID事务。
 2. 零配置--无需安装和管理配置。
-3. 支持大多数SQL92标准，比如：ATTACH DATABASE，BEGIN TRANSACTION，COMMENT等等，同时它还支持事务处理功能。
+3. 支持大多数SQL92标准，比如：`ATTACH DATABASE`，`BEGIN TRANSACTION`，`COMMENT`等等，同时它还支持事务处理功能。
 4. 单个数据库的所有信息储存在单一磁盘文件中。适用于作为应用程序文件的存储格式。
 5. 支持数据库大小扩展至2TB。
 6. 源码代码量小, 大致13万行C代码, 4.43M。
