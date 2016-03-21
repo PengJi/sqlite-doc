@@ -1,31 +1,31 @@
 # Shell模式下使用CLP
 <font face="微软雅黑" size="3px">
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;shell.c文件包括main()函数，用于创建CLP（静态链接的命令行程序）可执行程序。编译成功后，在命令行输入sqlite3 [数据库文件名]，可触发CLP的shell模式，并连接到一个临时的内存中的数据库。CLP以交互形式运行，可以执行查询、获得schema信息、导入/导出数据以及其他数据库任务。
+shell.c文件包括main()函数，用于创建CLP（静态链接的命令行程序）可执行程序。编译成功后，在命令行输入sqlite3 [数据库文件名]，可触发CLP的shell模式，并连接到一个临时的内存中的数据库。CLP以交互形式运行，可以执行查询、获得schema信息、导入/导出数据以及其他数据库任务。
 如果创建一个称为test.db的数据库，在DOS shell下键入：sqlite3 test.db，一旦数据库创建之后就不能再修改。<br>
 1）执行数据查询
 
     sqlite> .mode col
     sqlite> .headers on
     sqlite> SELECT * FROM test;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;两个命令(.headers and .mode)用于改进输出的格式，后面做详细说明。
+两个命令(.headers and .mode)用于改进输出的格式，后面做详细说明。
 CLP会将输入的任何语句当成查询命令，除非它是以“.”开头的，这些以点号开始的命令是为指定的CLP操作预留的，通过键入.help命令获取完整的操作列表（以下是部分操作码）：
 <img src="4.jpg">
 
 2）获得数据库的Schema信息<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你可以键入命令.tables [pattern]来得到所有表和视图的列表，其中[pattern]可以是任何类SQL的操作符。执行上述命令会返回符合条件的所有表和视图，如果没有pattern项，返回所有表和视图。
+你可以键入命令.tables [pattern]来得到所有表和视图的列表，其中[pattern]可以是任何类SQL的操作符。执行上述命令会返回符合条件的所有表和视图，如果没有pattern项，返回所有表和视图。
 
     sqlite> .tables
     schema test
 可以看到我们创建的表test和视图schema。
 
 3）数据导出<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可以使用.dump命令将数据库导出为SQL格式的文件。不使用任何参数，.dump将导出整个数据库。如果提供了参数，Shell将参数解析作为表名或视图，导出任何匹配给定参数的表或视图，那些不匹配的将被忽略。使用.dump[filename]命令，此命令将所有的输出重定向到指定的文件中。若要恢复到屏幕的输出，只需要执行.output stdout命令就可以了。
+可以使用.dump命令将数据库导出为SQL格式的文件。不使用任何参数，.dump将导出整个数据库。如果提供了参数，Shell将参数解析作为表名或视图，导出任何匹配给定参数的表或视图，那些不匹配的将被忽略。使用.dump[filename]命令，此命令将所有的输出重定向到指定的文件中。若要恢复到屏幕的输出，只需要执行.output stdout命令就可以了。
 
     sqlite> .output file.sql
     sqlite> .dump
     sqlite> .output stdout
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;有两种方法可以导入数据，用哪种方法决定于要导入的文件的格式。如果文件由SQL语句构成，可以使用.read命令导入(执行)文件中包含的命令。如果文件是由逗号或其它定界符分隔的值(comma-separated values, CSV)组成，可使用.import [file][table]命令。此命令将解析指定的文件并尝试将数据插入到指定的表中。
+有两种方法可以导入数据，用哪种方法决定于要导入的文件的格式。如果文件由SQL语句构成，可以使用.read命令导入(执行)文件中包含的命令。如果文件是由逗号或其它定界符分隔的值(comma-separated values, CSV)组成，可使用.import [file][table]命令。此命令将解析指定的文件并尝试将数据插入到指定的表中。
 
     sqlite> .show
     echo: off
@@ -36,7 +36,7 @@ CLP会将输入的任何语句当成查询命令，除非它是以“.”开头�
     output: stdout
     separator: "|"
     width:
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.read命令用来导入由.dump命令创建的文件。如果要使用前面作为备份文件所导出的file.sql，需要先移除已经存在的数据库对象(test表和schema视图)，然后用下面方法导入：
+.read命令用来导入由.dump命令创建的文件。如果要使用前面作为备份文件所导出的file.sql，需要先移除已经存在的数据库对象(test表和schema视图)，然后用下面方法导入：
 
     sqlite> drop table test;
     sqlite> drop view schema;
