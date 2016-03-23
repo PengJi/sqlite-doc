@@ -12,4 +12,4 @@
 	  int iForeGuard;                     /* Guard word for sanity */
 	};
 ```
-Unfree list 检查内存泄露主要是通过结构体MemBlockHdr的指针*pNext,和*pPrev来判断内存是否发生了泄露问题。
+Unfree list 检查内存泄露主要是通过结构体MemBlockHdr的指针`*pNext`,和`*pPrev`来判断内存是否发生了泄露问题。
