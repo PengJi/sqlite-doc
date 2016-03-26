@@ -1,15 +1,15 @@
 # 文件函数及结构体分析
 <font face="微软雅黑" size="3px">
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;正如文件的布局所示，文件中定义了一系列的结构体和函数来实现文件的功能。<br>
+正如文件的布局所示，文件中定义了一系列的结构体和函数来实现文件的功能。<br>
 
-1.UnixUnusedFd结构体<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 有时，SQLite 关闭文件句柄后不能立即关闭文件描述符。在这种情况下，这个结构的实例用于存储的文件描述符，同时等待机会，要么关闭或重用它。这个结构体包含了要关闭的文件描述符、打开此文件描述符的标志以及同一文件的下一个未使用的文件描述符<br>
+1.UnixUnusedFd结构体  
+有时，SQLite 关闭文件句柄后不能立即关闭文件描述符。在这种情况下，这个结构的实例用于存储的文件描述符，同时等待机会，要么关闭或重用它。这个结构体包含了要关闭的文件描述符、打开此文件描述符的标志以及同一文件的下一个未使用的文件描述符<br>
 
-2.unixFile结构体<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; unixFile 结构体是sqlite3\_file特定于unix VFS的子类实现。它的结构体原型如下：<br>
-typedef struct unixFile unixFile;<br>
-struct unixFile {<br>
+2.unixFile结构体  
+unixFile 结构体是sqlite3\_file特定于unix VFS的子类实现。它的结构体原型如下：  
+typedef struct unixFile unixFile;  
+struct unixFile   
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sqlite3\_io\_methods const \*pMethod;  		/\* 总是第一个进入\*/<br>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sqlite3\_vfs \*pVfs;                   		/\* 创建这个unixFile的VFS \*/<br>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unixInodeInfo \*pInode;              		/\* 关于这个i节点上的锁的消息\*/<br>
