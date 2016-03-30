@@ -1,15 +1,15 @@
 # 其他函数
 <font face="微软雅黑" size="3px">
 
-5.1数据的类型  
+5.1 数据的类型  
 （1）`static void typeofFunc(sqlite3_context *context, int NotUsed,  sqlite3_value**argv)`  
 返回参数类型  
 （2）工作流程  
-	若参数是SQLITE_INTEGER，则返回整数integer  
-	若参数是SQLITE_TEXT，则返回文本text  
-	若参数是SQLITE_FLOAT，则返回浮点数real  
-	若参数是SQLITE_BLOB，则返回二进制大对象blob  
-	若参数与以上的类型都不匹配，则返回空  
+1. 若参数是SQLITE_INTEGER，则返回整数integer;  
+2. 若参数是SQLITE_TEXT，则返回文本text;  
+3. 若参数是SQLITE_FLOAT，则返回浮点数real;  
+4. 若参数是SQLITE_BLOB，则返回二进制大对象blob;  
+5. 若参数与以上的类型都不匹配，则返回空;  
 如图为typeofFunc函数实现流程  
 <img src='typeofFunc函数.jpg'>    
 5.2 当前数据库连接最后插入行的ROWID  
