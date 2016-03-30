@@ -498,9 +498,6 @@
    * [Sqlite源代码介绍](introduce/sqliteG12.md)
 * [Shell模式下使用CLP](clp/shellclp.md)
    * [命令行模式下的CLP](clp/dosclp.md)
-   * [重要的API函数](function/api.md)
-   * [用户自定义函数](function/user.md)
-   * [结果代码](result/code.md)
 * [实现SQL的各种函数(func.c的源码分析)](sqlfuncc/README.md)
    * [算术函数](sqlfuncc/jisuan.md)
    * [字符处理函数](sqlfuncc/zifu.md)
@@ -508,4 +505,7 @@
    * [集合函数](sqlfuncc/jihe.md)
    * [其他函数](sqlfuncc/qita.md)
 * [SQLite C API](API/README.md)
+  * [重要的API函数](function/api.md)
+  * [用户自定义函数](function/user.md)
+  * [结果代码](result/code.md)
 
