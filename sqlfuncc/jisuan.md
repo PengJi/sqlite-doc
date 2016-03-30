@@ -6,10 +6,11 @@
 `static void minmaxFunc( sqlite3_context *context, int argc, sqlite3_value **argv)`
 通过变量mask 返回最值  
 （2）函数实现流程  
-	参数argc>1是否保持，判断用户数据的内容是否为0，如果为0，返回最小值0，反之返回最大值-1  
-	断言最值为-1或0是否保持，判断自定义接口的第一个参数是否为空，如果为空，返回结果  
-	如果不为空，循环变量，比较参数大小  
-	返回最值    
+1. 参数argc>1是否保持，判断用户数据的内容是否为0，如果为0，返回最小值0，反之返回最大值-1  
+2. 断言最值为-1或0是否保持，判断自定义接口的第一个参数是否为空，如果为空，返回结果  
+3. 如果不为空，循环变量，比较参数大小  
+4. 返回最值 
+   
 #### 返回随机整数`randomFunc`  
 （1）函数头  
 `static void randomFunc(	sqlite3_context *context, int NotUsed, sqlite3_value **NotUsed2)`
@@ -21,11 +22,12 @@ SQLite RANDOM 函数返回一个介于 -9223372036854775808 和 +922337203685477
 `static void absFunc(sqlite3_context *context, int argc, sqlite3_value **argv)`  
 返回数值的绝对值参数X  
 （2）函数实现流程  
-	如果参数argv[0]是`SQLITE_INTEGER`，赋值给变量ival，若ival小于0，对ival取绝对值，返回绝对值ival  
-	如果参数argv[0]是`SQLITE_NUL`L，返回空  
-	如果参数argv[0]与上面不匹配，默认赋值给一个双精度度rval，若rval小于0，对rval取绝对值，返回绝对值rval  
+1. 如果参数argv[0]是`SQLITE_INTEGER`，赋值给变量ival，若ival小于0，对ival取绝对值，返回绝对值ival  
+2. 如果参数argv[0]是`SQLITE_NUL`L，返回空  
+3. 如果参数argv[0]与上面不匹配，默认赋值给一个双精度度rval，若rval小于0，对rval取绝对值，返回绝对值rval  
 如图为absFunc函数实现流程  
-<img src='absFunc函数.jpg'>  
+<img src='absFunc函数.jpg'> 
+
 #### 返回数字表达式并四舍五入为指定的长度或精度`roundFunc`   
 （1） 函数头 
 ```c
