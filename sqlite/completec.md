@@ -5,6 +5,7 @@
 　　此文件包含C代码，用于实现`sqlite3_complete()`的API。本代码用的是tokenizer.c源文件的一部分。但是分离出来了，该代码会自动省略静态链表而不使用它。  
 主要代码功能分析:  
 　　这段程序是相似于`sqlite3_complete()`例程，所不同的是该参数需要是UTF-16进行编码，而不是UTF-8。  
+  
 ```C
 int sqlite3_complete16(const void *zSql){
   sqlite3_value *pVal;
