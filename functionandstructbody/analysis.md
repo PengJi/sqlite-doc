@@ -1,54 +1,56 @@
 # 文件函数及结构体分析
 <font face="微软雅黑" size="3px">
 
-正如文件的布局所示，文件中定义了一系列的结构体和函数来实现文件的功能。<br>
+正如文件的布局所示，文件中定义了一系列的结构体和函数来实现文件的功能。  
 
 1.UnixUnusedFd结构体  
-有时，SQLite 关闭文件句柄后不能立即关闭文件描述符。在这种情况下，这个结构的实例用于存储的文件描述符，同时等待机会，要么关闭或重用它。这个结构体包含了要关闭的文件描述符、打开此文件描述符的标志以及同一文件的下一个未使用的文件描述符<br>
+有时，SQLite 关闭文件句柄后不能立即关闭文件描述符。在这种情况下，这个结构的实例用于存储的文件描述符，同时等待机会，要么关闭或重用它。这个结构体包含了要关闭的文件描述符、打开此文件描述符的标志以及同一文件的下一个未使用的文件描述符。  
 
 2.unixFile结构体  
 unixFile 结构体是sqlite3\_file特定于unix VFS的子类实现。它的结构体原型如下：  
+```c
 typedef struct unixFile unixFile;  
 struct unixFile   
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sqlite3\_io\_methods const \*pMethod;  		/\* 总是第一个进入\*/<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sqlite3\_vfs \*pVfs;                   		/\* 创建这个unixFile的VFS \*/<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unixInodeInfo \*pInode;              		/\* 关于这个i节点上的锁的消息\*/<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int h;                              	/\* 文件描述符 \*/<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unsigned char eFileLock;            		/\* fd（即文件描述符）上加锁的类型 \*/<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unsigned short int ctrlFlags;      			/\* 行为位 \*/<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int lastErrno;                      		/\* 最后一个输入/输出错误的unix错误 \*/<br>
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void \*lockingContext;              		/\* Locking style specific state \*/<br>
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UnixUnusedFd \*pUnused;             	/\* 预分配的UnixUnusedFd \*/<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const char \*zPath;                 	 	/\* 文件名 \*/<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unixShm \*pShm;                     	/\* 共享内存段的信息 \*/<br>
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  int szChunk;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\#if SQLITE\_ENABLE\_LOCKING\_STYLE
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int openFlags;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\#endif<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\#if SQLITE\_ENABLE\_LOCKING\_STYLE || defined(\_\_APPLE\_\_)<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unsigned fsFlags;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\#endif<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\#if OS_VXWORKS<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;struct vxworksFileId *pId;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\#endif<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\#ifdef SQLITE_DEBUG<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unsigned char transCntrChng;<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unsigned char dbUpdate;<br>
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; unsigned char inNormalWrite;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\#endif<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\#ifdef SQLITE_TEST<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char aPadding[32];<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\#endif<br>
+sqlite3\_io\_methods const \*pMethod;  		/\* 总是第一个进入\*/<br>
+sqlite3\_vfs \*pVfs;                   		/\* 创建这个unixFile的VFS \*/<br>
+unixInodeInfo \*pInode;              		/\* 关于这个i节点上的锁的消息\*/<br>
+int h;                              	/\* 文件描述符 \*/<br>
+unsigned char eFileLock;            		/\* fd（即文件描述符）上加锁的类型 \*/<br>
+unsigned short int ctrlFlags;      			/\* 行为位 \*/<br>
+int lastErrno;                      		/\* 最后一个输入/输出错误的unix错误 \*/<br>
+void \*lockingContext;              		/\* Locking style specific state \*/<br>
+UnixUnusedFd \*pUnused;             	/\* 预分配的UnixUnusedFd \*/<br>
+const char \*zPath;                 	 	/\* 文件名 \*/<br>
+unixShm \*pShm;                     	/\* 共享内存段的信息 \*/<br>
+int szChunk;<br>
+\#if SQLITE\_ENABLE\_LOCKING\_STYLE
+int openFlags;<br>
+\#endif<br>
+\#if SQLITE\_ENABLE\_LOCKING\_STYLE || defined(\_\_APPLE\_\_)<br>
+unsigned fsFlags;<br>
+\#endif<br>
+\#if OS_VXWORKS<br>
+struct vxworksFileId *pId;<br>
+#endif<br>
+#ifdef SQLITE_DEBUG<br>
+unsigned char transCntrChng;<br>
+unsigned char dbUpdate;<br>
+unsigned char inNormalWrite;<br>
+#endif<br>
+#ifdef SQLITE_TEST<br>
+char aPadding[32];<br>
+#endif<br>
 };
+```
 
 3.posixOpen()函数<br>
 不同的 Unix 系统以不同的方式声明 open ()。同样使用open（ const char \*,int mode\_t）。其他的使用open (const char \*,int，......)。当使用指向函数的指针时这些区别是很重要的。为了解决这个问题，文件定义了posixOpen()函数。因为处理这个问题最安全的方式是始终使用这个总是具有相同的定义良好的接口的封装。函数原型如下：<br>
-static int posixOpen(const char \*zFile,int flags,int mode)
+`static int posixOpen(const char \*zFile,int flags,int mode)`
 
 4.
 posixFchown()函数<br>
 在某些系统上，来自非根进程对 fchown() 的调用将触发在安全日志中的消息。所以，如果我们不以 root 身份运行，要避免调用 fchown()。函数原型如下：<br>
-static int posixFchown(int fd,uid\_t uid,gid\_t gid)
+`static int posixFchown(int fd,uid\_t uid,gid\_t gid)`
 
 5.
 unix_syscall结构体<br>
@@ -57,11 +59,13 @@ unix_syscall结构体<br>
 6.
 unixSetSystemCall()函数<br>
 这个函数是sqlite3_vfs中实现所有设置系统调用的方法。它的函数原型如下：<br>
+```c
 static int unixSetSystemCall(<br>
   sqlite3_vfs \*pNotUsed,      /\*VFS 的指针。不使用 \*/<br>
   const char \*zName,       /\* 系统调用重写的名称\*/<br>
   sqlite3\_syscall\_ptr pNewFunc  /\* 指向新的系统调用值的指针\*/<br>
  )<br>
+```
 如果成功地更新系统调用指针，返回SQLITE\_OK；如果有是没有名为zName的可配置的系统调用就返回SQLITE\_NOTFOUND。
 
 7.
