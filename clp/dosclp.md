@@ -14,14 +14,13 @@
 数据库的备份有两种方法。第1种是使用.dump，可得到SQL格式的文件。在命令行方式下可如下做：
 ```
     sqlite3 test.db .dump > test.sql
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在CLP中可如下做：
 
     sqlite> .output file.sql
     sqlite> .dump
     sqlite> .exit
 ```
-相应地，导入一个SQL格式备份的数据库可如下做：
-`sqlite3 test.db < test.sql`
+相应地，导入一个SQL格式备份的数据库可如下做：  
+`sqlite3 test.db < test.sql`  
 此处假设test.db不存在。如果它存在，则或许会因为数据库中有同名的对象而出错。  
 可以用复制的方法得到一个二进制的数据库文件拷贝。但也许在复制之前你想先抽空(vacuum)它，也就是释放数据库文件中未使用的空间，以得到一个更小的数据库文件。可操作如下：
 ```
