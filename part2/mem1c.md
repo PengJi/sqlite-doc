@@ -1,5 +1,18 @@
 #  缺省内存分配器（mem1.c）
-<font face="微软雅黑" size="3px">
+<font face="微软雅黑">
 
-mem1.c中主要在系统malloc等函数基础上增加了一个长度的的头。用于统计内存使用量。当使用`SQLITE_SYSTEM_MALLOC`或没指定宏时启用。  
-缺省情况下，SQLite使用C标准库中的malloc(), realloc()和free()例程来分配内存。实现中还对这些例程做一层薄的包装以提供一个memsize()函数返回一个现存分配的大小。memsize()也能精确地跟踪未归还内存的字节数，它能确定当一个分配被释放时有多少字节从未归还内存中移除。缺省内存分配器中的memsize()实现是在每个malloc()请求上多分配额外8个字节作为头部，并把分配的大小保存到这个8字节的头部。
+这个文件包含了底层内存分配器，该分配器包含了标准的C函数库，比如`malloc/realloc/free`接口。当既没有定义`SQLITE_MEMDEBUG`，也没有定义`SQLITE_WIN32_MALLOC`时，`SQLITE_WIN32_MALLOC`被自动定义。
+文件中包含的预处理宏：
+`HAVE_MALLOC_USABLE_SIZE`
+`SQLITE_WITHOUT_ZONEMALLOC`
+`SQLITE_WITHOUT_MSIZE`
+特征：
+1. `SQLITE_SYSTEM_MALLOC`;
+定义该分配器的宏。
+2. 在每个`malloc()`分配的头部，多分配8byte保存分配的大小，以使用`memsize()`返回当前分配的大小；
+3. `memsize()`还可跟踪未归还的内存字节数，它能确定当一个分配被释放时，能有多少内存从未归还的内存中移除；
+4. 在大多数的应用程序中建议都使用这个缺省的内存分配器。
+
+函数介绍
+
+
