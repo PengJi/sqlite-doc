@@ -413,7 +413,7 @@
                * [关于backtrace](part2/backtrace.md)
                * [设置哨兵对内存破坏进行检查](part2/2_3_2.md)
                * [通过unfree list检查内存泄露](part2/unfree_list.md)
-           * [内存分配函数](part2/2_4.md)
+               * [内存分配函数](part2/2_4.md)
            * [Mem3.c](part3/README.md)
              * [Mem3.c功能概述](part3/mem3c.md)
              * [名词及相关概念](part3/3_1.md)
