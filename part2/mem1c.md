@@ -13,7 +13,7 @@
 3. `memsize()`还可跟踪未归还的内存字节数，它能确定当一个分配被释放时，能有多少内存从未归还的内存中移除；
 4. 在大多数的应用程序中建议都使用这个缺省的内存分配器。
 
-**函数介绍**
+## 函数介绍
 
 |编号|函数名|功能|
 |--|--|--|
@@ -25,5 +25,19 @@
 |6|static int sqlite3MemInit(void *NotUsed)|函数初始化
 |7|static void sqlite3MemShutdown(void *NotUsed)|取消函数的初始化
 |8|void sqlite3MemSetDefault(void)|底层内存分配函数
+
+## 主要函数介绍
+**初始化函数**  
+`static int sqlite3MemInit(void *NotUsed)`  
+初始化根据不同的平台，采用不同的操作。  
+
+**分配函数**  
+`static void *sqlite3MemMalloc(int nByte)`  
+该函数根据宏定义决定是否多分配8字节的头部来记录本次分配的大小，分配函数直接调用系统的malloc函数。在返回的时候，返回的指针是指向分配内存头部（记录大小）的下一个字节。执行流程如下：  
+
+
+
+
+## 函数测试
 
 
