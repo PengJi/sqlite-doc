@@ -3,6 +3,7 @@
 
 大量使用sqliteInt.h定义的结构体
 
+```c
 	int sqlite3MutexInit(void){
 	  int rc = SQLITE_OK;
 	  if( !sqlite3GlobalConfig.mutex.xMutexAlloc ){
@@ -42,4 +43,5 @@
 	#endif
 	  return rc;
 	}
+```
 
