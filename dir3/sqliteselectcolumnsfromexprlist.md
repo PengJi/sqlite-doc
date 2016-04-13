@@ -5,7 +5,7 @@
 selectColumnsFromExprList函数将将from后跟的表达式列表拆分，然后根据连接类型，调用连接函数，对表进行连接。<br>
 注：连接主要看on部分，from默认连接方式  只有一种，采用inner join的方式。<br>
 该函数全文如下:
-<pre>
+```c
 static int selectColumnsFromExprList(
 	  Parse *pParse,          /*解析上下文*/
 	  ExprList *pEList,       /*来自于列名的表达式列表*/
@@ -22,5 +22,5 @@ static int selectColumnsFromExprList(
        int nName;                  /*存放列名的数组的长度*/
        return SQLITE_OK;           /*返回SQLITE_OK值*/
 }
-	</pre>
+```
 
