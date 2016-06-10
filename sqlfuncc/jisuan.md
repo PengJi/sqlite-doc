@@ -3,7 +3,7 @@
 
 #### 输出最小值最大值`minmaxFunc`  
 （1）函数头  
-`static void minmaxFunc( sqlite3_context *context, int argc, sqlite3_value **argv)`
+`static void minmaxFunc( sqlite3_context *context, int argc, sqlite3_value **argv)`  
 通过变量mask 返回最值  
 （2）函数实现流程  
 1. 参数argc>1是否保持，判断用户数据的内容是否为0，如果为0，返回最小值0，反之返回最大值-1  
@@ -13,7 +13,7 @@
    
 #### 返回随机整数`randomFunc`  
 （1）函数头  
-`static void randomFunc(	sqlite3_context *context, int NotUsed, sqlite3_value **NotUsed2)`
+`static void randomFunc(sqlite3_context *context, int NotUsed, sqlite3_value **NotUsed2)`  
 SQLite RANDOM 函数返回一个介于 -9223372036854775808 和 +9223372036854775807之间的伪随机整数。  
 （2）函数实现流程  
 利用随机函数返回随机数，如果随机变量r小于0，为负值，取其绝对值，返回正值即随机数  
