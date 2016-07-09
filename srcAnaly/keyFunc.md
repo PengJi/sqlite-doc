@@ -2,9 +2,9 @@
 # sqlite查询处理的关键函数
 <font face="微软雅黑" size="3px">
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sqlite的查询处理首先进行语法分析，语法分析最终在sqlite3SelectNew中完成；然后生成执行计划，select的执行计划在sqlite3Select中完成，该函数先对SQL语句进行语义分析，然后再进行优化，最后生成执行计划。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;语法分析的主要任务就是对用户输入的SQL语句进行语法检查，然后生成一个包含所有信息的语法树。对于SELECT语句，这个语法树最终由结构体Select表示，结构体select的具体说明如表3.1所示。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**表3.1  结构体select的具体说明**
+Sqlite的查询处理首先进行语法分析，语法分析最终在sqlite3SelectNew中完成；然后生成执行计划，select的执行计划在sqlite3Select中完成，该函数先对SQL语句进行语义分析，然后再进行优化，最后生成执行计划。  
+语法分析的主要任务就是对用户输入的SQL语句进行语法检查，然后生成一个包含所有信息的语法树。对于SELECT语句，这个语法树最终由结构体Select表示，结构体select的具体说明如表3.1所示。  
+**表3.1  结构体select的具体说明**
 <table>
 <tr>
 <td>参数</td>
