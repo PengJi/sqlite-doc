@@ -2,7 +2,7 @@
 <font face="微软雅黑" size="3px">
 
 //对应于操作码的操作数为3个，但是有特定的操作码类型的情况  
-（1）操作数修改函数  
+（1）操作数修改函数
 `void sqlite3VdbeChangeP1(Vdbe *p， u32 addr， int val)`  
 `void sqlite3VdbeChangeP2(Vdbe *p， u32 addr， int val)`  
 `void sqlite3VdbeChangeP3(Vdbe *p， u32 addr， int val)`  
