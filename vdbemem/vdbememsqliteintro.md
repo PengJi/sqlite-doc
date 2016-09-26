@@ -1,7 +1,7 @@
 # SQLite特性
 <font face="微软雅黑">
 
-SQLite的特性主要有：    
+SQLite的特性主要有：   
 1. ACID事务。  
 2. 零配置--无需安装和管理配置。  
 3. 支持大多数SQL92标准，比如：`ATTACH DATABASE`，`BEGIN TRANSACTION`，`COMMENT`等等，同时它还支持事务处理功能。  
